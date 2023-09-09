@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+  output: 'export',
+}
 
 module.exports = nextConfig
 
@@ -17,6 +19,7 @@ if (isGithubActions) {
   basePath = `/${repo}`
 
   module.exports = {
+    output: 'export',
     assetPrefix: assetPrefix,
     basePath: basePath,
   }
