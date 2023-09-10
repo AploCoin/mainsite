@@ -1,6 +1,7 @@
 import s from './styles.module.scss';
 import { FC, useEffect, useState } from 'react';
 import Image from 'next/image';
+import LogoAplo from '@/public/media/logoaplo.svg';
 // import LogoAplo from '../../../public/media/logoaplo.svg';
 // import 
 
@@ -10,7 +11,7 @@ interface LogoProps {
 const Logo: FC<LogoProps> = props => {
     return (<a className={s.logo} href='/'>
         <Image
-            src='/media/logoaplo.svg'
+            src={LogoAplo}
             alt={''}
             width={65}
             height={65}

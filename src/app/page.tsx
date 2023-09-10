@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { Header } from '@/widgets/Header';
 import { Background } from '@/widgets/Background';
 import s from './styles.module.scss';
+import LogoAplo from '@/public/media/logoaplo.svg';
 
 export default function Home() {
   return (
@@ -13,7 +14,7 @@ export default function Home() {
           <Background>
             <div className={s.about_container}>
               <Image
-                src='/media/logoaplo.svg'
+                src={LogoAplo}
                 alt={''}
                 width={300}
                 height={300}
