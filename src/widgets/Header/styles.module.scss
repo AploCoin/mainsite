@@ -16,6 +16,12 @@
     box-sizing: border-box;
 }
 
+@media screen and (max-width: 953px){
+    .big_header{
+        display: none;
+    }
+}
+
 .logo{
     display: flex;
     flex-direction: row;
