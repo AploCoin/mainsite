@@ -23,7 +23,7 @@ if (isGithubActions) {
    const repo = process.env.GITHUB_REPOSITORY.replace(/.*?\//, '')
 
    assetPrefix = `/${repo}/`
-   basePath = `/`
+   basePath = ``
    module.exports = {
      output: 'export',
      assetPrefix: assetPrefix,
