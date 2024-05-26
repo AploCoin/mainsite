@@ -1,16 +1,16 @@
-const repo = 'MainSite'
-const assetPrefix = `/${repo}/`
-const basePath = `/${repo}`
+const repo = "MainSite";
+const assetPrefix = `/${repo}/`;
+const basePath = `/${repo}`;
+const createNextIntlPlugin = require('next-intl/plugin');
+ 
+const withNextIntl = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     output: 'export',
-    // assetPrefix: assetPrefix,
-    // basePath: basePath,
 }
 
-module.exports = nextConfig
-
+module.exports = withNextIntl(nextConfig);
 
 // const isGithubActions = process.env.GITHUB_ACTIONS || false
 
@@ -32,5 +32,3 @@ module.exports = nextConfig
 // }
 
 // module.exports = nextConfig
-
-
