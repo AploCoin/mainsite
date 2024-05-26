@@ -1,6 +1,6 @@
 const repo = "MainSite";
-const assetPrefix = `/${repo}/`;
-const basePath = `/${repo}`;
+var assetPrefix = `/${repo}/`;
+var basePath = `/${repo}`;
 const createNextIntlPlugin = require('next-intl/plugin');
  
 const withNextIntl = createNextIntlPlugin();
