@@ -6,11 +6,11 @@ const createNextIntlPlugin = require('next-intl/plugin');
 const withNextIntl = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+var nextConfig = {
     output: 'export',
 }
 
-module.exports = withNextIntl(nextConfig);
+//module.exports = withNextIntl(nextConfig);
 
 const isGithubActions = process.env.GITHUB_ACTIONS || false
 
@@ -24,11 +24,13 @@ if (isGithubActions) {
 
    assetPrefix = `/${repo}/`
    basePath = ``
-   module.exports = {
+   nextConfig = {
      output: 'export',
      assetPrefix: assetPrefix,
      basePath: basePath,
    }
 }
+
+module.exports = withNextIntl(nextConfig);
 
 // module.exports = nextConfig
