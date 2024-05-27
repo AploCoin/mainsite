@@ -1,4 +1,5 @@
 import { useState, ChangeEvent, ReactNode, useTransition } from 'react';
+import Image from 'next/image';
 import { useRouter, usePathname, useParams } from 'next/navigation';
 import styles from './LanguageSwitcher.module.css';
 
@@ -40,11 +41,11 @@ const LanguageSwitcher = () => {
 
   return (
     <div className={styles.container} onClick={toggleDropdown}>
-      <div className={styles.icon}>🌐</div>
+      <Image src="/menu/language.svg" width={20} height={16} alt="Icon change language" className={styles.icon} />
       <div className={styles.selectedLanguage}>
         {locales.find((locale) => locale.code === selectedLocale)?.label}
       </div>
-      <div className={`${styles.arrow} ${isOpen ? styles.open : ''}`}>⌄</div>
+      <Image src="/menu/arrow.png" width={6} height={3} alt="Arrow change language" className={`${styles.arrow} ${isOpen ? styles.open : ''}`}/>
       {isOpen && (
         <ul className={styles.dropdown}>
           {locales.map((locale) => (

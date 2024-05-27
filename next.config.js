@@ -2,13 +2,15 @@ const repo = "MainSite";
 var assetPrefix = `/${repo}/`;
 var basePath = `/${repo}`;
 const createNextIntlPlugin = require('next-intl/plugin');
- 
+
 const withNextIntl = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
 var nextConfig = {
   output: 'export',
-  reactStrictMode: true,
+  images: {
+    loader: 'custom',
+  },
 }
 
 //module.exports = withNextIntl(nextConfig);
@@ -19,17 +21,20 @@ const isGithubActions = process.env.GITHUB_ACTIONS || false
 //let basePath = '/'
 
 if (isGithubActions) {
- 
-//   // trim off `<owner>/`
-   const repo = process.env.GITHUB_REPOSITORY.replace(/.*?\//, '')
 
-   assetPrefix = `/${repo}/`
-   basePath = ``
-   nextConfig = {
-     output: 'export',
-     assetPrefix: assetPrefix,
-     basePath: basePath,
-   }
+  //   // trim off `<owner>/`
+  const repo = process.env.GITHUB_REPOSITORY.replace(/.*?\//, '')
+
+  assetPrefix = `/${repo}/`
+  basePath = ``
+  nextConfig = {
+    output: 'export',
+    images: {
+      loader: 'custom',
+    },
+    assetPrefix: assetPrefix,
+    basePath: basePath,
+  }
 }
 
 module.exports = withNextIntl(nextConfig);
