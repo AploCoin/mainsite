@@ -7,7 +7,8 @@ const withNextIntl = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
 var nextConfig = {
-    output: 'export',
+  output: 'export',
+  reactStrictMode: true,
 }
 
 //module.exports = withNextIntl(nextConfig);
