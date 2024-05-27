@@ -12,10 +12,10 @@
 }
 
 .selectedLanguage {
-  padding: 0.8rem 1rem;
+  padding-left: 1px;
+  padding-right: 3px;
   color: rgb(117, 115, 115);
-  font-family: Montserrat;
-  font-size: 13px;
+  font-size: clamp(10px, 1.25vw, 34px);
   font-weight: 500;
   line-height: 16px;
   letter-spacing: 0%;
@@ -44,8 +44,7 @@
 .option {
   padding: 0.8rem 1rem;
   color: rgb(117, 115, 115);
-  font-family: Montserrat;
-  font-size: 13px;
+  font-size: clamp(10px, 1.25vw, 34px);
   font-weight: 500;
   line-height: 16px;
   letter-spacing: 0%;

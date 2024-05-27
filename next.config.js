@@ -9,7 +9,7 @@ const withNextIntl = createNextIntlPlugin();
 var nextConfig = {
   output: 'export',
   images: {
-    loader: 'custom',
+    unoptimized: true,
   },
 }
 

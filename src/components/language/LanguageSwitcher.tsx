@@ -2,6 +2,9 @@ import { useState, ChangeEvent, ReactNode, useTransition } from 'react';
 import Image from 'next/image';
 import { useRouter, usePathname, useParams } from 'next/navigation';
 import styles from './LanguageSwitcher.module.css';
+import { Montserrat } from 'next/font/google';
+
+const montserrat = Montserrat({ subsets: ['latin', 'cyrillic'] })
 
 type LocaleOption = {
   code: string;
@@ -42,7 +45,7 @@ const LanguageSwitcher = () => {
   return (
     <div className={styles.container} onClick={toggleDropdown}>
       <Image src="/menu/language.svg" width={20} height={16} alt="Icon change language" className={styles.icon} />
-      <div className={styles.selectedLanguage}>
+      <div className={`${styles.selectedLanguage} ${montserrat.className}`}>
         {locales.find((locale) => locale.code === selectedLocale)?.label}
       </div>
       <Image src="/menu/arrow.png" width={6} height={3} alt="Arrow change language" className={`${styles.arrow} ${isOpen ? styles.open : ''}`}/>
@@ -51,7 +54,7 @@ const LanguageSwitcher = () => {
           {locales.map((locale) => (
             <li
               key={locale.code}
-              className={styles.option}
+              className={`${styles.option} ${montserrat.className}`}
               onClick={() => onSelectChange({ target: { value: locale.code } } as ChangeEvent<HTMLSelectElement>)}
             >
               {locale.label}
