@@ -1,10 +1,10 @@
-import { useState, ChangeEvent, ReactNode, useTransition } from 'react';
-import Image from 'next/image';
-import { useRouter, usePathname, useParams } from 'next/navigation';
-import styles from './LanguageSwitcher.module.css';
-import { Montserrat } from 'next/font/google';
-
-const montserrat = Montserrat({ subsets: ['latin', 'cyrillic'] })
+import { useState, ChangeEvent, useTransition, useEffect } from "react";
+import Image from "next/image";
+import { useRouter, usePathname, useParams } from "next/navigation";
+import styles_pc from "./desktop.module.css";
+import styles_mobile from "./mobile.module.css";
+import { Montserrat } from "next/font/google";
+const montserrat = Montserrat({ subsets: ["latin", "cyrillic"] });
 
 type LocaleOption = {
   code: string;
@@ -17,11 +17,13 @@ const LanguageSwitcher = () => {
   const pathname = usePathname();
   const params = useParams();
   const locales: LocaleOption[] = [
-    { code: 'en', label: 'English' },
-    { code: 'ua', label: 'Українська' },
-    { code: 'ru', label: 'Русский' },
+    { code: "en", label: "English" },
+    { code: "ua", label: "Українська" },
+    { code: "ru", label: "Русский" },
   ];
-  const [selectedLocale, setSelectedLocale] = useState(params.locale || locales[0].code);
+  const [selectedLocale, setSelectedLocale] = useState(
+    params.locale || locales[0].code
+  );
   const [isOpen, setIsOpen] = useState(false);
 
   const onSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
@@ -41,28 +43,61 @@ const LanguageSwitcher = () => {
   const toggleDropdown = () => {
     setIsOpen((prev) => !prev);
   };
+  const [isMobile, setIsMobile] = useState(false);
+
+  const handleResize = () => {
+    setIsMobile(window.innerWidth <= 800);
+  };
+
+  useEffect(() => {
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  let styles = isMobile ? styles_mobile : styles_pc
 
   return (
-    <div className={styles.container} onClick={toggleDropdown}>
-      <Image src="/menu/language.svg" width={20} height={16} alt="Icon change language" className={styles.icon} />
-      <div className={`${styles.selectedLanguage} ${montserrat.className}`}>
-        {locales.find((locale) => locale.code === selectedLocale)?.label}
+    <>
+      <div className={styles.container} onClick={toggleDropdown}>
+        <Image
+          src="/menu/language.svg"
+          width={20}
+          height={16}
+          alt="Icon change language"
+          className={styles.icon}
+        />
+        <div className={`${styles.selectedLanguage} ${montserrat.className}`}>
+          {locales.find((locale) => locale.code === selectedLocale)?.label}
+        </div>
+        <Image
+          src="/menu/arrow.png"
+          width={6}
+          height={3}
+          alt="Arrow change language"
+          className={`${styles.arrow} ${isOpen ? styles.open : ""}`}
+        />
+        {isOpen && (
+          <ul className={styles.dropdown}>
+            {locales.map((locale) => (
+              <li
+                key={locale.code}
+                className={`${styles.option} ${montserrat.className}`}
+                onClick={() =>
+                  onSelectChange({
+                    target: { value: locale.code },
+                  } as ChangeEvent<HTMLSelectElement>)
+                }
+              >
+                {locale.label}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
-      <Image src="/menu/arrow.png" width={6} height={3} alt="Arrow change language" className={`${styles.arrow} ${isOpen ? styles.open : ''}`}/>
-      {isOpen && (
-        <ul className={styles.dropdown}>
-          {locales.map((locale) => (
-            <li
-              key={locale.code}
-              className={`${styles.option} ${montserrat.className}`}
-              onClick={() => onSelectChange({ target: { value: locale.code } } as ChangeEvent<HTMLSelectElement>)}
-            >
-              {locale.label}
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
+    </>
   );
 };
 

@@ -1,0 +1,46 @@
+.mainComponent {
+    padding-left: 3.73vw;
+    padding-right: 3.73vw;
+    position: fixed;
+    z-index: 10;
+    width: 100vw;
+}
+
+.logo {
+    height: auto;
+    width: 12.8vw;
+    padding: 4px;
+}
+
+.icon {
+    width: 6.4vw;
+    transition: transform 0.3s;
+}
+
+.open {
+    transform: rotate(90deg);
+}
+
+.menuPopup {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: #FFFFFF;
+    flex-direction: column;
+    padding-top: 12vh;
+}
+
+.border {
+    background-color: #EDEEF0;
+    height: 1px;
+    width: 100vw;
+}
+.url-button {
+    margin-left: 8.53vw;
+    margin-top: 2.46vh;
+    margin-bottom: 2.46vh;
+    font-size: 18px;
+    font-weight: 500;
+}

@@ -3,32 +3,25 @@
   align-items: center;
   cursor: pointer;
   position: relative;
+  margin-right: 4vw;
 }
 
 .icon {
-  width: 19.19px;
-  height: 16px;
-  margin-right: 1px;
+  width: 9vw;
+  height: 4vh;
+  margin-right: 3px;
 }
 
 .selectedLanguage {
-  padding-left: 1px;
-  padding-right: 3px;
-  color: rgb(117, 115, 115);
-  font-size: clamp(10px, 1.25vw, 34px);
-  font-weight: 500;
-  line-height: 16px;
-  letter-spacing: 0%;
-  text-align: right;
+  display: none;
 }
 
 .arrow {
-  width: 6px;
-  height: 3px;
+  width: 2vw;
   transition: transform 0.3s;
 }
 
-.arrow.open {
+.arrow .open {
   transform: rotate(180deg);
 }
 
@@ -42,9 +35,9 @@
 }
 
 .option {
-  padding: 0.8rem 1rem;
+  padding: 3vh 2vw;
   color: rgb(117, 115, 115);
-  font-size: clamp(10px, 1.25vw, 34px);
+  font-size: clamp(10px, 4vw, 34px);
   font-weight: 500;
   line-height: 16px;
   letter-spacing: 0%;

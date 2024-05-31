@@ -17,12 +17,27 @@
 
 .url-button{
     color: rgb(125, 125, 125);
-    font-size: clamp(10px, 1.25vw, 34px);
+    font-size: clamp(10px, 1.25vw, 64px);
     font-weight: 500;
     letter-spacing: 0%;
     text-align: center;
     margin-right: clamp(8px, 2.77vw, 50px);
 }
+
+.en-lang .url-button {
+    font-size: clamp(10px, 1.25vw, 64px);
+}
+
+.ru-lang .url-button {
+    font-size: clamp(9px, 0.95vw, 64px);
+    margin-right: clamp(8px, 2vw, 50px);
+}
+
+.ua-lang .url-button {
+    font-size: clamp(9px, 0.95vw, 64px);
+    margin-right: clamp(8px, 2vw, 50px);
+}
+
 
 .donate-button {
     display: flex;
@@ -38,8 +53,10 @@
 .donate-text {
     height: auto;
     color: rgb(255, 255, 255);
-    font-size: clamp(10px, 1vw, 34px);
+    font-size: clamp(10px, 1vw, 64px);
     font-weight: 700;
     text-align: right;
     text-transform: uppercase;
 }
+
+

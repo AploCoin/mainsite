@@ -1,0 +1,251 @@
+.main-container {
+    max-width: 100vw;
+    margin-left: clamp(4vw, 9vw, 10.55vw);
+    margin-right: clamp(4vw, 9vw, 10.55vw);
+    margin-bottom: 2vh;
+    background: white;
+    display: grid;
+    overflow: hidden;
+    grid-template-columns: 1fr 1fr;
+    box-shadow: 0px 2px 4px 0px rgba(50, 50, 93, 0.1);
+}
+
+.left-side-image {
+    min-width: 45.34vw;
+    height: 100%;
+}
+
+.right-side {
+    padding-top: 7vh;
+    padding-bottom: 7vh;
+    padding-right: 5vh;
+}
+
+.right-side-heading {
+    font-size: 48px;
+    font-weight: bold;
+    color: #4C4C4C;
+    padding-bottom: 2vh;
+}
+
+.right-side-text {
+    font-size: 24px;
+    font-weight: normal;
+    color: #4C4C4C;
+    padding-bottom: 2vh;
+}
+
+.right-side-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 23vw;
+}
+
+.right-side-button1 {
+    width: 100%;
+    height: 100%;
+    background: #3380B3;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    padding: 1vh 0;
+}
+
+.right-side-button2 {
+    width: 100%;
+    height: 100%;
+    border: 5px solid #3380B3;
+    background: white;
+    color: #3380B3;
+    font-size: 17px;
+    font-weight: bold;
+    padding: 1vh 0;
+}
+
+.advantages-container {
+    max-width: 100vw;
+    margin-left: clamp(4vw, 9vw, 10.55vw);
+    margin-right: clamp(4vw, 9vw, 10.55vw);
+    margin-bottom: 2vh;
+    background: white;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    box-shadow: 0px 2px 4px 0px rgba(50, 50, 93, 0.1);
+}
+
+.left-advantages-info, .left-advantages-image{
+    padding-left: 10vw;
+}
+
+.right-advantages-info, .right-advantages-image {
+    padding-right: 10vw;
+}
+
+.advantage-image1 {
+    margin-top: 5vh;
+}
+
+.advantage-image {
+    max-width: 25vw;
+    width: 100%;
+}
+
+.advantage-image4{
+    max-width: 30vw;
+    width: 100%;
+    padding-bottom: 3vh;
+}
+
+.advantages-info-heading {
+    color: #4C4C4C;
+    font-size: 20px;
+    font-weight: 600;
+    padding-bottom: 1vh;
+}
+
+.advantages-info-text {
+    font-size: 17px;
+    font-weight: 400;
+    color: #4C4C4C;
+}
+
+.advantages-info {
+    padding-top: 10vh;
+}
+
+.advantage-faq-button {
+    font-size: 20px;
+    font-weight: 700;
+    color: #3380B3;
+    margin-top: 2vh;
+    padding: 0.5vh 4vw;
+    margin-bottom: 4vw;
+    border: 5px solid #3380B3;
+}
+
+.guides-section {
+    max-width: 100vw;
+    margin-left: clamp(4vw, 9vw, 10.55vw);
+    margin-right: clamp(4vw, 9vw, 10.55vw);
+    margin-bottom: 2vh;
+    display: grid;
+    grid-template-columns: 1.4fr 0.6fr;
+    gap: 1vw
+}
+
+.guides-and-resources, .aplopedia {
+    background: white;
+    box-shadow: 0px 2px 4px 0px rgba(50, 50, 93, 0.1);
+}
+
+.guides-and-resources-heading, .aplopedia-heading {
+    padding-top: 3vh;
+    font-size: 28px;
+    font-weight: 700;
+    color: #4C4C4C;
+    text-align: center;
+}
+
+.aplopedia-text, .guides-and-resources-text {
+    font-size: 17px;
+    font-weight: 400;
+    color: #4C4C4C;
+    text-align: center;
+    padding: 1vw 3vw;
+}
+
+.guides-and-resources-button {
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+    background: #3380B3;
+    padding: 1vh 3vw;
+    margin: 0 auto;
+    display: block;
+}
+
+.aplopedia-link > p{
+    color: #3380B3;
+    font-size: 17px;
+    font-weight: 700;
+    text-align: center;
+    border-bottom: 2px #3380B3 dashed;
+    margin: 0 35%;
+}
+
+.aplopedia-link, .guides-and-resources-button {
+    margin-bottom: 5vh;
+}
+
+.community-section {
+    max-width: 100vw;
+    margin-left: clamp(4vw, 9vw, 10.55vw);
+    margin-right: clamp(4vw, 9vw, 10.55vw);
+    margin-bottom: 2vh;
+    background: white;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    box-shadow: 0px 2px 4px 0px rgba(50, 50, 93, 0.1);
+}
+
+.community-advantage-info-left, .community-image-left{
+    padding-left: 10vw;
+}
+
+.community-advantage-info-right, .community-image-right {
+    padding-right: 10vw;
+}
+
+.community-title {
+    margin-left: clamp(4vw, 9vw, 10.55vw);
+    margin-right: clamp(4vw, 9vw, 10.55vw);
+    padding-bottom: -1vh;
+    font-size: 28px;
+    font-weight: 700;
+    color: #4C4C4C;
+    background: white;
+    text-align: center;
+    padding-top: 3vh;
+}
+
+.community-image1 {
+    max-width: 30vw;
+    width: 100%;
+}
+
+.community-image2 {
+    max-width: 30vw;
+    width: 100%;
+}
+
+.community-image3 {
+    max-width: 30vw;
+    width: 100%;
+    margin-bottom: 5vh;
+}
+
+.community-advantage-info-heading {
+    font-size: 20px;
+    font-weight: 600;
+    color: #4C4C4C;
+    padding-top: 5vh;
+    padding-bottom: 1vh;
+}
+
+.community-advantage-info-text {
+    font-size: 17px;
+    font-weight: 400;
+    color: #4C4C4C;
+    padding-bottom: 2vh;
+}
+
+.community-advantage-button {
+    font-size: 17px;
+    font-weight: 700;
+    color: #3380B3;
+    background: white;
+    padding: 1vh 3vw;
+    border: 5px solid #3380B3;
+    margin-bottom: 4vh;
+}

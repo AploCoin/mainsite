@@ -5,4 +5,5 @@
 
 body {
     background: rgb(237, 238, 240);
+    overflow-x: hidden;
 }

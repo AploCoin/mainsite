@@ -1,9 +1,9 @@
-'use client';
+"use client";
 import {useEffect, useState} from "react";
 import dynamic from "next/dynamic";
 
-const DesktopPage = dynamic(() => import('./page/desktop/Desktop'), { ssr: false });
-const MobilePage = dynamic(() => import('./page/mobile/Mobile'), { ssr: false });
+const DesktopPage = dynamic(() => import('./desktop/Desktop'), { ssr: false });
+const MobilePage = dynamic(() => import('./mobile/Mobile'), { ssr: false });
 
 export default function Home() {
     const [isMobile, setMobile] = useState(false);
