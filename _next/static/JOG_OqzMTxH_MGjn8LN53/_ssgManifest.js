@@ -1,0 +1,1 @@
+self.__SSG_MANIFEST=new Set(["\u002F[locale]","\u002F[locale]\u002Fabout-aplo","\u002F[locale]\u002Fdonate-aplo-project","\u002F[locale]\u002Ffaq","\u002F[locale]\u002Fmining-aplo","\u002F[locale]\u002Froadmap","\u002F[locale]\u002Fuser-guides","\u002F[locale]\u002Fwhat-is-aplo"]);self.__SSG_MANIFEST_CB&&self.__SSG_MANIFEST_CB()
