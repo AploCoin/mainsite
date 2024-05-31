@@ -8,7 +8,6 @@ const withNextIntl = createNextIntlPlugin();
 /** @type {import('next').NextConfig} */
 var nextConfig = {
   output: 'export',
-  basePath: "/",
   images: {
     unoptimized: true,
   },
@@ -26,7 +25,7 @@ if (isGithubActions) {
   //   // trim off `<owner>/`
   const repo = process.env.GITHUB_REPOSITORY.replace(/.*?\//, '')
 
-  assetPrefix = `/${repo}/`
+  assetPrefix = `/`
   basePath = ``
   nextConfig = {
     output: 'export',
