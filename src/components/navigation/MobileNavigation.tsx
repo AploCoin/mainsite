@@ -19,7 +19,8 @@ export default function MobileNavigation() {
 
   useEffect(() => {
     if (mainComponentRef.current) {
-      setMainComponentHeight(mainComponentRef.current.offsetHeight);
+      let component = mainComponentRef.current as any
+      setMainComponentHeight(component.offsetHeight);
     }
   }, []);
 
