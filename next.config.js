@@ -8,6 +8,7 @@ const withNextIntl = createNextIntlPlugin();
 /** @type {import('next').NextConfig} */
 var nextConfig = {
   output: 'export',
+  basePath: "/",
   images: {
     unoptimized: true,
   },
