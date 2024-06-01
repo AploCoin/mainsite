@@ -30,7 +30,7 @@ if (isGithubActions) {
   nextConfig = {
     output: 'export',
     images: {
-      loader: 'custom',
+      unoptimized: true,
     },
     assetPrefix: assetPrefix,
     basePath: basePath,
