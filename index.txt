@@ -1,7 +1,8 @@
-3:I[9275,[],""]
-4:I[1343,[],""]
-5:I[8709,["160","static/chunks/app/not-found-3e8e996eee71e75b.js"],"default"]
-0:["GruG0t6jSVeFIF1R_oiFI",[[["",{"children":["__PAGE__",{}]},"$undefined","$undefined",true],["",{"children":["__PAGE__",{},[["$L1","$L2"],null],null]},[["$","html",null,{"lang":"$undefined","children":["$","body",null,{"children":["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":["$","$L5",null,{}],"notFoundStyles":[],"styles":null}]}]}],null],null],[null,"$L6"]]]]
-2:E{"digest":"NEXT_REDIRECT;replace;/en;307;"}
-6:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","1",{"charSet":"utf-8"}],["$","meta","2",{"name":"next-size-adjust"}]]
+2:I[6513,[],"ClientPageRoot"]
+3:I[8212,["1931","static/chunks/app/page-fedeb5d5d89232bd.js"],"default"]
+4:I[9275,[],""]
+5:I[1343,[],""]
+6:I[8709,["9160","static/chunks/app/not-found-736649f6547ed59b.js"],"default"]
+0:["Gyr3Xw083XcmtYS7h0U6W",[[["",{"children":["__PAGE__",{}]},"$undefined","$undefined",true],["",{"children":["__PAGE__",{},[["$L1",["$","$L2",null,{"props":{"params":{},"searchParams":{}},"Component":"$3"}]],null],null]},[["$","html",null,{"lang":"$undefined","children":["$","body",null,{"children":["$","$L4",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":["$","$L6",null,{}],"notFoundStyles":[],"styles":null}]}]}],null],null],[null,"$L7"]]]]
+7:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","1",{"charSet":"utf-8"}],["$","meta","2",{"name":"next-size-adjust"}]]
 1:null
