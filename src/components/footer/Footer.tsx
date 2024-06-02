@@ -91,10 +91,10 @@ const CustomFooter = () => {
         </div>
       </div>
       <div className={styles['url-container']}>
-        <Link href="https://github.com/AploCoin/mainsite" target="_blank" className={styles['source-code-link']}>
+        {/* <Link href="https://github.com/AploCoin/mainsite" target="_blank" className={styles['source-code-link']}>
           {t('sourceCode')}
           <Image src="/menu/url.svg" width={9} height={8} alt="Url icon for navigation"/>
-        </Link>
+        </Link> */}
         <Link href="https://t.me/+agd5PnUnNWAyYjEy">
           <Image src="/menu/telegram.svg" alt="Telegram icon" width={15} height={15} className={styles["icon-img"]}/>
         </Link>
