@@ -6,7 +6,7 @@ import { notFound } from 'next/navigation'
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/navigation/component";
-import Footer from "@/components/footer/Footer";
+import CustomFooter from "@/components/footer/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -49,7 +49,7 @@ export default async function LocaleLayout({
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Navigation />
           {children}
-          <Footer/>
+          <CustomFooter/>
         </NextIntlClientProvider>
       </body>
     </html>

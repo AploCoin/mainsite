@@ -20,7 +20,7 @@ export default function DesktopNavigation() {
       style={{
         paddingLeft: "clamp(4vw, 9vw, 10.55vw)",
         paddingRight: "clamp(4vw, 9vw, 10.55vw)",
-        width: "100vw",
+        maxWidth: "100vw",
       }}
     >
       <div

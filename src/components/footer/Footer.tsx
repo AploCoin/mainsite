@@ -1,10 +1,10 @@
 "use client";
 import { useState, useEffect } from "react";
-import styles from "./desktop.module.css";
 import Image from "next/image";
 import { Murecho, Open_Sans } from "next/font/google";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 const murecho = Murecho({
   subsets: ["latin", "cyrillic"],
@@ -16,12 +16,12 @@ const open_sans = Open_Sans({
   variable: "--font-open-sans",
 });
 
-
-const Footer = () => {
+const CustomFooter = () => {
+  const t = useTranslations('Footer');
   const pathname = usePathname();
   const lang = pathname.substring(1, 3);
   const [isMobile, setIsMobile] = useState(false);
-  const [styless, setStyles] = useState<any>({});
+  const [styles, setStyles] = useState<any>({});
 
   const handleResize = () => {
     setIsMobile(window.innerWidth <= 800);
@@ -50,7 +50,7 @@ const Footer = () => {
 
   return (
     <footer className={`${styles.footer} ${murecho.variable} ${open_sans.variable}`}>
-      <div className="flex flex-row justify-between">
+      <div className={styles["main-container"]}>
         <div className="flex flex-row items-center">
           <Image
             src="/menu/logo.png"
@@ -60,47 +60,53 @@ const Footer = () => {
             className={styles.logo}
           />
           <div className={`${styles["logo-text-container"]}`}>
-            <span className={`${styles["logo-text"]}`}>
-              Private, decentralized
+            <span className={`${styles["logo-text"]}`}>{t('privateDecentralized')}</span>
+            <span
+              className={`${styles["logo-text"]} ${styles["padding-text"]}`}
+            >
+              {t('keepsFinances')}
             </span>
             <span
               className={`${styles["logo-text"]} ${styles["padding-text"]}`}
             >
-              cryptocurrency that keeps
+              {t('confidentialSecure')}
             </span>
-            <span
-              className={`${styles["logo-text"]} ${styles["padding-text"]}`}
-            >
-              your finances confidential
-            </span>
-            <span className={`${styles["logo-text"]}`}>and secure.</span>
+            <span className={`${styles["logo-text"]}`}>{t('andSecure')}</span>
           </div>
         </div>
         <div className={styles["nav-container"]}>
-          <h3>Resources</h3>
-          <Link href={`/${lang}/what-is-aplo`}>What is aplo</Link>
-          <Link href={`/${lang}/mining-aplo`}>Mining</Link>
-          <Link href={`/${lang}/about-aplo`}>About</Link>
-          <Link href={`/${lang}/roadmap`}>Roadmap</Link>
+          <h3>{t('resources')}</h3>
+          <Link href={`/${lang}/what-is-aplo`}>{t('whatIsAplo')}</Link>
+          <Link href={`/${lang}/mining-aplo`}>{t('mining')}</Link>
+          <Link href={`/${lang}/about-aplo`}>{t('about')}</Link>
+          <Link href={`/${lang}/roadmap`}>{t('roadmap')}</Link>
         </div>
         <div className={styles["nav-container"]}>
-          <h3>Reach Out</h3>
-          <Link href={`/${lang}/`}>Contact</Link>
+          <h3>{t('reachOut')}</h3>
+          <Link href={`/${lang}/`}>{t('contact')}</Link>
         </div>
         <div className={styles["nav-container"]}>
-          <h3>Community</h3>
-          <Link href={`/${lang}/`}>Exchanges</Link>
+          <h3>{t('community')}</h3>
+          <Link href={`/${lang}/`}>{t('exchanges')}</Link>
         </div>
       </div>
-      <div style={{marginTop: "8.78vw"}} className="flex flex-row">
+      <div className={styles['url-container']}>
         <Link href="https://github.com/AploCoin/mainsite" target="_blank" className={styles['source-code-link']}>
-          Source Code
+          {t('sourceCode')}
           <Image src="/menu/url.svg" width={9} height={8} alt="Url icon for navigation"/>
         </Link>
-        
+        <Link href="https://t.me/+agd5PnUnNWAyYjEy">
+          <Image src="/menu/telegram.svg" alt="Telegram icon" width={15} height={15} className={styles["icon-img"]}/>
+        </Link>
+        <Link href="https://discord.gg/CfsneqdYBF">
+          <Image src="/menu/discord.svg" alt="Discord icon" width={15} height={15} className={styles["icon-img"]}/>
+        </Link>
+        <Link href="https://github.com/AploCoin/">
+          <Image src="/menu/github.svg" alt="Github icon" width={15} height={15} className={styles["icon-img"]}/>
+        </Link>
       </div>
     </footer>
   );
 };
 
-export default Footer;
+export default CustomFooter;
