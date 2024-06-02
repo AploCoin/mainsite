@@ -1,9 +1,8 @@
 import { useState, ChangeEvent, useTransition, useEffect } from "react";
 import Image from "next/image";
 import { useRouter, usePathname, useParams } from "next/navigation";
-import styles_pc from "./desktop.module.css";
-import styles_mobile from "./mobile.module.css";
 import { Montserrat } from "next/font/google";
+
 const montserrat = Montserrat({ subsets: ["latin", "cyrillic"] });
 
 type LocaleOption = {
@@ -43,7 +42,9 @@ const LanguageSwitcher = () => {
   const toggleDropdown = () => {
     setIsOpen((prev) => !prev);
   };
+
   const [isMobile, setIsMobile] = useState(false);
+  const [styles, setStyles] = useState<any>({});
 
   const handleResize = () => {
     setIsMobile(window.innerWidth <= 800);
@@ -57,7 +58,18 @@ const LanguageSwitcher = () => {
     };
   }, []);
 
-  let styles = isMobile ? styles_mobile : styles_pc
+  useEffect(() => {
+    const loadStyles = async () => {
+      if (isMobile) {
+        const module = await import('./mobile.module.css');
+        setStyles(module);
+      } else {
+        const module = await import('./desktop.module.css');
+        setStyles(module);
+      }
+    };
+    loadStyles();
+  }, [isMobile]);
 
   return (
     <>

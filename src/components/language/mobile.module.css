@@ -8,7 +8,7 @@
 
 .icon {
   width: 9vw;
-  height: 4vh;
+  /* height: 4vh; */
   margin-right: 3px;
 }
 
@@ -35,7 +35,7 @@
 }
 
 .option {
-  padding: 3vh 2vw;
+  padding: 1vh 2vw;
   color: rgb(117, 115, 115);
   font-size: clamp(10px, 4vw, 34px);
   font-weight: 500;

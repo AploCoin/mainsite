@@ -1,17 +1,14 @@
-import {ReactNode} from 'react';
-
+import { ReactNode } from "react";
 
 type Props = {
-    children: ReactNode;
-    params: { locale: string };
+  children: ReactNode;
+  params: { locale: string };
 };
 
-export default function RootLayout({children, params}: Props) {
-    return (
-        <html lang={params.locale}>
-        <body>
-        {children}
-        </body>
-        </html>
-    )
+export default function RootLayout({ children, params }: Props) {
+  return (
+    <html lang={params.locale}>
+      <body>{children}</body>
+    </html>
+  );
 }
