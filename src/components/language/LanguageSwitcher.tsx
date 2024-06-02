@@ -57,15 +57,14 @@ const LanguageSwitcher = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
   useEffect(() => {
     const loadStyles = async () => {
       if (isMobile) {
-        const module = await import('./mobile.module.css');
-        setStyles(module);
+        const style_mobile = await import('./mobile.module.css');
+        setStyles(style_mobile);
       } else {
-        const module = await import('./desktop.module.css');
-        setStyles(module);
+        const style_pc = await import('./desktop.module.css');
+        setStyles(style_pc);
       }
     };
     loadStyles();
