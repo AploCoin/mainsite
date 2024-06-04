@@ -1,0 +1,38 @@
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.heading {
+    margin-top: 10vh;
+    text-align: center;
+    color: #4C4C4C;
+    font-size: 90px;
+    font-weight: 700;
+}
+
+.text {
+    text-align: center;
+    color: #4C4C4C;
+    font-size: 26px;
+    font-weight: 700;
+    margin-top: 3vh;
+}
+
+.return-button {
+    margin-top: 5vh;
+    border: none;
+    border: 5px solid #3380B3;
+    padding: 1vh 3vw;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.button-text {
+    text-decoration: none;
+    color: #3380B3;
+    font-size: 17px;
+    font-weight: 700;
+    text-transform: uppercase;
+}

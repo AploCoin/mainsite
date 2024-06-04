@@ -1,12 +1,27 @@
-'use client';
-import styles from "./not-found.module.css";
+"use client";
+import {useEffect, useState} from "react";
+import dynamic from "next/dynamic";
+const DesktopPage = dynamic(() => import('./not-found/desktop/Desktop'), { ssr: false });
+const MobilePage = dynamic(() => import('./not-found/mobile/Mobile'), { ssr: false });
 
 export default function NotFound() {
+    const [isMobile, setMobile] = useState(false);
+
+    const handleResize = () => {
+        window.innerWidth > 1000 ? setMobile(false) : setMobile(true);
+    };
+
+    useEffect(() => {
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
     return (
         <>
-            <p className={styles["heading"]}>404</p>
-            <p className={styles["text"]}>Page not found (perhaps it values privacy)</p>
-            <button className={styles["return-button"]}></button>
+            {isMobile ? <MobilePage/> : <DesktopPage/>}
         </>
     )
 }

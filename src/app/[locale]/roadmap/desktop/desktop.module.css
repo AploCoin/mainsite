@@ -1,0 +1,126 @@
+.page-heading {
+    color: #4C4C4C;
+    font-size: 36px;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 3vh;
+}
+
+.roadmap-remarks {
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.roadmap-remark, .remark-span {
+    display: flex;
+    align-items: center;
+}
+
+.roadmap-remark {
+    color: #4C4C4C;
+    font-weight: 400;
+    font-size: 17px;
+    margin-left: 4vw;
+    margin-right: 4vw;
+}
+
+.remark-icon {
+    max-width: 4vw;
+}
+
+.menu-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: clamp(4vw, 9vw, 10.55vw);
+    padding-right: clamp(4vw, 9vw, 10.55vw);
+    max-width: 100vw;
+}
+
+.roadmap-buttons {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    width: 100%;
+    margin-bottom: 3vh;
+}
+
+.roadmap-category {
+    height: 6vh;
+    width: 100%;
+    cursor: pointer;
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.category-year {
+    color: #4C4C4C;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.activated:after {
+    content:"";
+    position: absolute;
+    border-style:solid;
+    transform: translateY(3.5vh);
+    border-width:17px 15px 0 15px;
+    border-color:#3380B3 transparent transparent transparent;
+}
+.activated > .category-year {
+    color: #FFFFFF;
+}
+.activated {
+    background: #3380B3;
+}
+
+.main-container {
+    max-width: 100vw;
+    margin-left: clamp(4vw, 9vw, 10.55vw);
+    margin-right: clamp(4vw, 9vw, 10.55vw);
+    margin-bottom: 2vh;
+    background: white;
+    overflow: hidden;
+    box-shadow: 0px 2px 4px 0px rgba(50, 50, 93, 0.1);
+}
+
+.roadmap-task {
+    color: #4C4C4C;
+    font-weight: 400;
+    font-size: 17px;
+}
+
+.task-container {
+    margin-left: 10vw;
+    margin-right: 10vw;
+    margin-bottom: 3vh;
+}
+
+.year-heading {
+    font-weight: 700;
+    font-size: 28px;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+    text-align: center;
+}
+
+.link-task{
+    color: black;
+    font-weight: 500;
+}
+
+.remark-link-icon {
+    width: 0.8vw;
+    margin-left: 0.5vw;
+}
+
+.remark-link {
+    border-bottom: 1px dashed #b7b7b7;
+}

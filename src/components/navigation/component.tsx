@@ -9,7 +9,7 @@ export default function Navigation() {
     const [isMobile, setIsMobile] = useState(false);
 
     const handleResize = () => {
-        setIsMobile(window.innerWidth <= 800);
+        setIsMobile(window.innerWidth <= 1000);
     };
 
     useEffect(() => {

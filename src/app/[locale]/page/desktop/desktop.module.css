@@ -42,25 +42,15 @@
     max-width: 23vw;
 }
 
-.right-side-button1 {
-    width: 100%;
-    height: 100%;
-    background: #3380B3;
-    color: white;
-    font-size: 17px;
-    font-weight: bold;
-    padding: 1vh 0;
-}
-
-.right-side-button2 {
+.right-side-button2, .right-side-button1 {
     width: 100%;
     height: 100%;
     border: 5px solid #3380B3;
     background: white;
     color: #3380B3;
-    font-size: 17px;
+    font-size: 1.1vw;
     font-weight: bold;
-    padding: 1vh 0;
+    padding: 1vw 0;
 }
 
 .advantages-container {
@@ -158,11 +148,12 @@
 .guides-and-resources-button {
     font-size: 20px;
     font-weight: 700;
-    color: white;
-    background: #3380B3;
     padding: 1vh 3vw;
     margin: 0 auto;
     display: block;
+    border: 5px solid #3380B3;
+    background: white;
+    color: #3380B3;
 }
 
 .aplopedia-link > p{
@@ -248,4 +239,14 @@
     padding: 1vh 3vw;
     border: 5px solid #3380B3;
     margin-bottom: 4vh;
+}
+
+
+.guides-and-resources-button:hover, .advantage-faq-button:hover, .community-advantage-button:hover, .right-side-button1:hover, .right-side-button2:hover {
+    background: #3380B3;
+    color: #FFFFFF;
+}
+
+.guides-and-resources-button, .advantage-faq-button, .community-advantage-button, .right-side-button1, .right-side-button2 {
+    transition: color 0.5s ease;
 }

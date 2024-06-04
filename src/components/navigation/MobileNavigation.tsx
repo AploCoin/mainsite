@@ -52,7 +52,7 @@ export default function MobileNavigation() {
       </div>
       <div
         style={{
-          height: `${mainComponentHeight * 2}px`,
+          height: `${mainComponentHeight}px`,
           marginBottom: "1.35vh",
         }}
       ></div>

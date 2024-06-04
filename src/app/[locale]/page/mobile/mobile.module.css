@@ -42,9 +42,9 @@
 .main-button1 {
     font-size: 17px;
     font-weight: 700;
-    color: white;
-    background: #3380B3;
     padding: 1vh 9vw;
+    color: #3380B3;
+    border: 5px solid #3380B3;
 }
 
 .main-button2 {
@@ -131,10 +131,10 @@
 }
 
 .guides-button {
-    color: white;
+    color: #3380B3;
+    border: 5px solid #3380B3;
     font-size: 17px;
     font-weight: 700;
-    background: #3380B3;
     margin-top: 2vh;
     margin-bottom: 3vh;
     padding: 1vh 15vw;

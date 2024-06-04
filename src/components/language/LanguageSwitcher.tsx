@@ -47,7 +47,7 @@ const LanguageSwitcher = () => {
   const [styles, setStyles] = useState<any>({});
 
   const handleResize = () => {
-    setIsMobile(window.innerWidth <= 800);
+    setIsMobile(window.innerWidth <= 1000);
   };
 
   useEffect(() => {

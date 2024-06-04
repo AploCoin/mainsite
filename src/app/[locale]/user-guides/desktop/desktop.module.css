@@ -1,0 +1,56 @@
+.page-heading {
+    text-align: center;
+    color: #4C4C4C;
+    margin-top: 2vh;
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 2vh;
+}
+
+.guide-link, .guide-link-span {
+    display: flex;
+    align-items: center;
+}
+
+.guides-link-image {
+    margin-left: 0.5vw;
+    max-width: 0.5vw;
+}
+
+.guides-link-image2 {
+    margin-left: 0.5vw;
+    max-width: 1vw;
+}
+
+.main-container {
+    margin-left: clamp(4vw, 9vw, 10.55vw);
+    margin-right: clamp(4vw, 9vw, 10.55vw);
+    display: grid;
+    gap: 1vh 2vw;
+    grid-template-columns: 1fr 1fr;
+}
+
+.guide-container {
+    box-shadow: 0px 2px 4px 0px rgba(50, 50, 93, 0.1);
+    background: white;
+    min-height: 400px;
+    margin-bottom: 3vh;
+}
+
+.guide-heading {
+    margin: 5vh 5vw 1vh;
+    color: #4C4C4C;
+    font-weight: 700;
+    font-size: 28px;
+}
+
+.guide-link {
+    max-width: 60%;
+    color: #4C4C4C;
+    font-weight: 400;
+    font-size: 28px;
+    border-bottom: 1px dashed #b7b7b7;
+    margin-right: 5vw;
+    margin-left: 5vw;
+    margin-bottom: 2vh;
+}
