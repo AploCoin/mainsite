@@ -1,0 +1,122 @@
+.page-heading {
+    font-weight: 700;
+    font-size: 28.8px;
+    color: #4C4C4C;
+    margin-bottom: 1vh;
+    text-align: center;
+}
+
+.page-description {
+    margin-left: 10vw;
+    margin-right: 10vw;
+    font-weight: 400;
+    font-size: 16px;
+    color: #4C4C4C;
+    margin-bottom: 3vh;
+    text-align: center;
+}
+
+.double-section {
+    margin-left: 2vw;
+    margin-right: 2vw;
+}
+
+.double-section-right, .double-section-left {
+    box-shadow: 0px 2px 4px 0px rgba(50, 50, 93, 0.1);
+    background: white;
+    margin-bottom: 3vh;
+}
+
+.left-container {
+    padding: 5vh 5vw 5vh 3vw;
+}
+
+.page-link, .page-link-span {
+    display: flex;
+    align-items: center;
+}
+
+.page-link {
+    margin-bottom: 1vh;
+}
+
+.page-link-span {
+    color: #4C4C4C;
+    font-weight: 400;
+    font-size: 16px;
+    border-bottom: 1px dashed #A1AABB;
+}
+
+.page-link-image {
+    margin-left: 0.5vw;
+    max-width: 2vw;
+}
+
+.section-heading {
+    color: #4C4C4C;
+    font-weight: 600;
+    font-size: 22.4px;
+    margin-bottom: 3vh;
+    text-align: center;
+}
+
+.links-paragraph {
+    margin-left: 10vw;
+}
+
+.links-heading{
+    font-weight: 400;
+    color: black;
+    font-size: 20.8px;
+    margin-bottom: 1vh;
+}
+
+.right-container {
+    padding: 5vh 3vw 5vh 3vw;
+}
+
+.right-link-heading {
+    font-weight: 400;
+    color: black;
+    font-size: 20px;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+}
+
+.main-section {
+    margin-left: 2vw;
+    margin-right: 2vw;
+    box-shadow: 0px 2px 4px 0px rgba(50, 50, 93, 0.1);
+    background: white;
+    margin-bottom: 3vh;
+}
+
+.main-container {
+    padding: 5vh 3vw 5vh 3vw;
+}
+
+.paragraph-heading {
+    font-weight: 600;
+    color: #16689F;
+    font-size: 24px;
+    margin-bottom: 2vh;
+}
+
+.paragraph-text {
+    font-weight: 400;
+    color: #4C4C4C;
+    font-size: 20px;
+    margin-bottom: 3vh;
+}
+
+.more-link {
+    display: flex;
+    font-weight: 400;
+    font-size: 16px;
+    color: #4C4C4C;
+    align-items: center;
+}
+
+.more-link > span {
+    margin-right: 1vw;
+}
