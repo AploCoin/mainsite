@@ -4,6 +4,8 @@ import LanguageSwitcher from "../language/LanguageSwitcher";
 import Image from "next/image";
 import { Murecho } from "next/font/google";
 import { useTranslations } from "next-intl";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 const murecho = Murecho({ subsets: ["latin", "cyrillic"] });
 
@@ -13,13 +15,21 @@ export default function MobileNavigation() {
   const [mainComponentHeight, setMainComponentHeight] = useState(0);
   const mainComponentRef = useRef(null);
 
+  const pathname = usePathname();
+  const lang = pathname.substring(1, 3);
+
   function toggle() {
     setShowMe(!showMe);
+  }
+  function close() {
+    setTimeout(() => {
+      setShowMe(false);
+    }, 300);
   }
 
   useEffect(() => {
     if (mainComponentRef.current) {
-      let component = mainComponentRef.current as any
+      let component = mainComponentRef.current as any;
       setMainComponentHeight(component.offsetHeight);
     }
   }, []);
@@ -30,13 +40,15 @@ export default function MobileNavigation() {
         ref={mainComponentRef}
         className={`flex flex-column bg-white justify-between items-center ${styles.mainComponent}`}
       >
-        <Image
-          src="/menu/logo.png"
-          width={6}
-          height={3}
-          alt="AploCoin logo"
-          className={styles.logo}
-        />
+        <Link href={`/${lang}`} onClick={close}>
+          <Image
+            src="/menu/logo.png"
+            width={6}
+            height={3}
+            alt="AploCoin logo"
+            className={styles.logo}
+          />
+        </Link>
         <div className="flex flex-column">
           <LanguageSwitcher />
           <button onClick={toggle}>
@@ -62,32 +74,54 @@ export default function MobileNavigation() {
         }}
         className={styles.menuPopup}
       >
-        <a className={`${styles["url-button"]} ${murecho.className}`}>
-          {t("whatIsAplo")}
-        </a>
-        <div className={styles.border} />
-        <a className={`${styles["url-button"]} ${murecho.className}`}>
-          {t("mining")}
-        </a>
-        <div className={styles.border} />
-        <a className={`${styles["url-button"]} ${murecho.className}`}>
-          {t("faq")}
-        </a>
-        <div className={styles.border} />
-        <a className={`${styles["url-button"]} ${murecho.className}`}>
-          {t("about")}
-        </a>
-        <div className={styles.border} />
-        <a className={`${styles["url-button"]} ${murecho.className}`}>
-          {t("roadmap")}
-        </a>
-        <div className={styles.border} />
-        <a
+        <Link
+          href={`/${lang}/what-is-aplo`}
           className={`${styles["url-button"]} ${murecho.className}`}
+          onClick={close}
+        >
+          {t("whatIsAplo")}
+        </Link>
+        <div className={styles.border} />
+        <Link
+          href={`/${lang}/mining-aplo`}
+          className={`${styles["url-button"]} ${murecho.className}`}
+          onClick={close}
+        >
+          {t("mining")}
+        </Link>
+        <div className={styles.border} />
+        <Link
+          href={`/${lang}/faq`}
+          className={`${styles["url-button"]} ${murecho.className}`}
+          onClick={close}
+        >
+          {t("faq")}
+        </Link>
+        <div className={styles.border} />
+        <Link
+          href={`/${lang}/about-aplo`}
+          className={`${styles["url-button"]} ${murecho.className}`}
+          onClick={close}
+        >
+          {t("about")}
+        </Link>
+        <div className={styles.border} />
+        <Link
+          href={`/${lang}/roadmap`}
+          className={`${styles["url-button"]} ${murecho.className}`}
+          onClick={close}
+        >
+          {t("roadmap")}
+        </Link>
+        <div className={styles.border} />
+        <Link
+          href={`/${lang}/user-guides`}
+          className={`${styles["url-button"]} ${murecho.className}`}
+          onClick={close}
+          style={{ marginRight: "0px" }}
         >
           {t("userGuides")}
-        </a>
-        <div className={styles.border} />
+        </Link>
       </div>
     </>
   );
