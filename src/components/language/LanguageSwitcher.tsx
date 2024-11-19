@@ -1,115 +1,92 @@
-import { useState, ChangeEvent, useTransition, useEffect } from "react";
-import Image from "next/image";
+"use client";
+
+import { useState } from "react";
 import { useRouter, usePathname, useParams } from "next/navigation";
-import { Montserrat } from "next/font/google";
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem } from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
 
-const montserrat = Montserrat({ subsets: ["latin", "cyrillic"] });
-
-type LocaleOption = {
-  code: string;
-  label: string;
-};
-
-const LanguageSwitcher = () => {
-  const [isPending, startTransition] = useTransition();
+export default function LanguageSwitcher() {
   const router = useRouter();
   const pathname = usePathname();
   const params = useParams();
-  const locales: LocaleOption[] = [
+
+  const locales = [
     { code: "en", label: "English" },
     { code: "ua", label: "Українська" },
     { code: "ru", label: "Русский" },
   ];
-  const [selectedLocale, setSelectedLocale] = useState(
-    params.locale || locales[0].code
-  );
-  const [isOpen, setIsOpen] = useState(false);
 
-  const onSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    const nextLocale = event.target.value;
-    if (nextLocale === selectedLocale) {
-      setIsOpen(false);
-      return;
-    }
-    setSelectedLocale(nextLocale);
-    startTransition(() => {
-      const updatedPathname = `/${nextLocale}${pathname.substring(3)}`;
+  const [selectedLocale, setSelectedLocale] = useState(params.locale || locales[0].code);
+
+  const handleLanguageChange = (locale: string) => {
+    if (locale !== selectedLocale) {
+      setSelectedLocale(locale);
+      const updatedPathname = `/${locale}${pathname.substring(3)}`;
       router.replace(updatedPathname);
-      setIsOpen(false);
-    });
+    }
   };
-
-  const toggleDropdown = () => {
-    setIsOpen((prev) => !prev);
-  };
-
-  const [isMobile, setIsMobile] = useState(false);
-  const [styles, setStyles] = useState<any>({});
-
-  const handleResize = () => {
-    setIsMobile(window.innerWidth <= 1000);
-  };
-
-  useEffect(() => {
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-  useEffect(() => {
-    const loadStyles = async () => {
-      if (isMobile) {
-        const style_mobile = await import('./mobile.module.css');
-        setStyles(style_mobile);
-      } else {
-        const style_pc = await import('./desktop.module.css');
-        setStyles(style_pc);
-      }
-    };
-    loadStyles();
-  }, [isMobile]);
 
   return (
-    <>
-      <div className={styles.container} onClick={toggleDropdown}>
-        <Image
-          src="/menu/language.svg"
-          width={20}
-          height={16}
-          alt="Icon change language"
-          className={styles.icon}
-        />
-        <div className={`${styles.selectedLanguage} ${montserrat.className}`}>
-          {locales.find((locale) => locale.code === selectedLocale)?.label}
-        </div>
-        <Image
-          src="/menu/arrow.png"
-          width={6}
-          height={3}
-          alt="Arrow change language"
-          className={`${styles.arrow} ${isOpen ? styles.open : ""}`}
-        />
-        {isOpen && (
-          <ul className={styles.dropdown}>
-            {locales.map((locale) => (
-              <li
-                key={locale.code}
-                className={`${styles.option} ${montserrat.className}`}
-                onClick={() =>
-                  onSelectChange({
-                    target: { value: locale.code },
-                  } as ChangeEvent<HTMLSelectElement>)
-                }
-              >
-                {locale.label}
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
-    </>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline" className="flex items-center gap-2">
+          <FlagIcon className="h-5 w-5" />
+          <span>{selectedLocale.toUpperCase()}</span>
+          <ChevronDownIcon className="h-4 w-4" />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end" className="w-40">
+        <DropdownMenuGroup>
+          {locales.map((locale) => (
+            <DropdownMenuItem
+              key={locale.code}
+              onSelect={() => handleLanguageChange(locale.code)}
+            >
+              <FlagIcon className="mr-2 h-5 w-5" />
+              {locale.label}
+            </DropdownMenuItem>
+          ))}
+        </DropdownMenuGroup>
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
-};
+}
 
-export default LanguageSwitcher;
+function ChevronDownIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="m6 9 6 6 6-6" />
+    </svg>
+  );
+}
+
+function FlagIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" />
+      <line x1="4" x2="4" y1="22" y2="15" />
+    </svg>
+  );
+}
