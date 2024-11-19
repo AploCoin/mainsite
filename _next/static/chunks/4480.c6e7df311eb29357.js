@@ -1,1 +1,0 @@
-(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[4480],{2383:function(_){_.exports={container:"mobile_container__gkC_I",icon:"mobile_icon__bud74",selectedLanguage:"mobile_selectedLanguage__rtnVE",arrow:"mobile_arrow__jDhiG",open:"mobile_open__yH77t",dropdown:"mobile_dropdown__t5jmL",option:"mobile_option__Np7_L"}}}]);
