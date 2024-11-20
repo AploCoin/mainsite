@@ -4,16 +4,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { Murecho } from "next/font/google";
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarGroup,
-  SidebarMenu,
-  SidebarMenuItem,
-  SidebarMenuButton,
-  SidebarHeader,
-  SidebarFooter,
-} from "@/components/ui/sidebar";
+import { Sheet, SheetContent, SheetHeader, SheetTrigger } from "@/components/ui/sheet";
 import LanguageSwitcher from "../language/LanguageSwitcher";
 import { clsx } from "clsx";
 
@@ -21,15 +12,14 @@ const murecho = Murecho({ subsets: ["latin", "cyrillic"] });
 
 export default function MobileNavigation() {
   const t = useTranslations("Menu");
-  const [showMenu, setShowMenu] = useState(false);
+  const [open, setOpen] = useState(false);
   const [mainComponentHeight, setMainComponentHeight] = useState(0);
-  const mainComponentRef = useRef(null);
+  const mainComponentRef = useRef<null | HTMLDivElement>(null);
 
   const pathname = usePathname();
   const lang = pathname.substring(1, 3);
 
-  const toggleMenu = () => setShowMenu(!showMenu);
-  const closeMenu = () => setTimeout(() => setShowMenu(false), 300);
+  const closeMenu = () => setTimeout(() => setOpen(false), 300);
 
   useEffect(() => {
     if (mainComponentRef.current) {
@@ -48,12 +38,10 @@ export default function MobileNavigation() {
 
   return (
     <>
-      <div
-        style={{ height: `${mainComponentHeight}px`, marginBottom: "1.35vh" }}
-      ></div>
+      <div style={{ height: `${mainComponentHeight / 2}px`, marginBottom: "1.35vh" }}></div>
       <div
         ref={mainComponentRef}
-        className={`flex flex-column bg-white justify-between items-center pl-[3.73vw] pr-[3.73vw] z-10 w-full fixed top-0`}
+        className="flex flex-column bg-white justify-between items-center px-[3.73vw] z-10 w-full fixed top-0"
       >
         <Link href={`/${lang}`} onClick={closeMenu}>
           <Image
@@ -64,65 +52,55 @@ export default function MobileNavigation() {
             className="w-[12.8vw] h-auto p-1"
           />
         </Link>
-        <button onClick={toggleMenu}>
-          <div>
-          <Image
-              src="/menu/menu-m.svg"
-              width={24}
-              height={16}
-              alt="Icon open menu"
-              className="w-[9vw]"
-            />
-          </div>
-        </button>
-      </div>
-      <Sidebar open={showMenu} onOpenChange={setShowMenu} side="right">
-        <SidebarHeader />
-        <SidebarContent>
-          <SidebarGroup>
-            <SidebarMenu className="overflow-hidden">
-              <SidebarMenuItem key="switcher">
-                <div className="flex flex-row items-center space-y-3 w-full justify-between">
-                  <Link
-                    href={`/${lang}/donate-aplo-project`}
-                    className="flex items-center justify-center w-auto rounded-sm pr-3 pl-3 pt-1 pb-1"
-                    style={{ background: "rgb(51, 128, 179)" }}
+        <Sheet open={open} onOpenChange={setOpen}>
+          <SheetTrigger asChild>
+            <button>
+              <Image
+                src="/menu/menu-m.svg"
+                width={24}
+                height={16}
+                alt="Icon open menu"
+                className="w-[9vw]"
+              />
+            </button>
+          </SheetTrigger>
+          <SheetContent side="right" className="w-[280px] sm:w-[360px]">
+            <SheetHeader className="space-y-6">
+              <div className="flex flex-row items-center justify-between">
+                <Link
+                  href={`/${lang}/donate-aplo-project`}
+                  className="flex items-center justify-center w-auto rounded-sm px-3 py-1"
+                  style={{ background: "rgb(51, 128, 179)" }}
+                  onClick={closeMenu}
+                >
+                  <span
+                    className={clsx(
+                      murecho.className,
+                      "h-full !w-auto size-[clamp(10px,1vw,64px)] font-bold text-center uppercase"
+                    )}
+                    style={{ color: "rgb(255, 255, 255)" }}
                   >
-                    <span
-                      className={clsx(
-                        murecho.className,
-                        "h-full size-[clamp(10px, 1vw, 64px)] font-bold text-center uppercase"
-                      )}
-                      style={{ color: "rgb(255, 255, 255)" }}
-                    >
-                      {t("donate")}
-                    </span>
+                    {t("donate")}
+                  </span>
+                </Link>
+                <LanguageSwitcher />
+              </div>
+              <nav className="flex flex-col space-y-4">
+                {menuItems.map((item) => (
+                  <Link
+                    key={item.title}
+                    href={item.url}
+                    className={clsx(murecho.className, "font-medium")}
+                    onClick={closeMenu}
+                  >
+                    {item.title}
                   </Link>
-                  <LanguageSwitcher />
-                </div>
-              </SidebarMenuItem>
-              {menuItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <Link
-                      href={item.url}
-                      className={clsx(murecho.className, "font-medium size-4")}
-                      style={{
-                        marginTop: "2.46vh",
-                        marginBottom: "2.46vh",
-                      }}
-                      onClick={closeMenu}
-                    >
-                      {item.title}
-                    </Link>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroup>
-        </SidebarContent>
-        <SidebarFooter />
-      </Sidebar>
+                ))}
+              </nav>
+            </SheetHeader>
+          </SheetContent>
+        </Sheet>
+      </div>
     </>
   );
 }

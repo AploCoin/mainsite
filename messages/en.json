@@ -30,7 +30,7 @@
     "aboutAplo": "ABOUT APLO",
     "joinCommunity": "JOIN COMMUNITY",
     "chooseWallet": "Choose a Wallet",
-    "walletDescription": "To use Aplo, the first thing you are going to need is a wallet. Visit our Downloads page and get the right wallet for you. The Aplo wallets are available for a variety of platforms and contain everything you need to use Aplo immediately.",
+    "walletDescription": "Aplo supports any ethereum wallet, hooray!!!",
     "getCoins": "Get Some Coins",
     "getCoinsDescription": "After you install a wallet, you need to get some Aplo. There are multiple ways to acquire some coins to spend, like mining with any device you have or working in exchange for Aplo, but the easiest way is to use an exchange and convert your fiat money into APLO or sell GAS on them.",
     "useCurrency": "It's a Currency; Use It!",
@@ -48,7 +48,7 @@
     "contributeDescription": "Aplo is not simply a currency, it's a decentralized community and exists only thanks to the hundreds of volunteers that dedicate their time to the project. Join us!",
     "contributing": "CONTRIBUTING",
     "researchLab": "Aplo Research Lab (ARL)",
-    "researchLabDescription": "The ARL (Aplo Research Lab) is a very important part of Monero. Researchers and cryptographers from all over the world meet to find new ways to improve Aplo. Read their papers and join them!",
+    "researchLabDescription": "The ARL (Aplo Research Lab) is a very important part of APLO. Researchers and cryptographers from all over the world meet to find new ways to improve Aplo. Read their papers and join them!", 
     "meetCommunity": "Meet the community!",
     "meetCommunityDescription": "The members of the Aplo community are all over the world. You can find us on multiple platforms. Come meet us!",
     "hangouts": "HANGOUTS"

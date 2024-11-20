@@ -28,10 +28,10 @@ export default function LanguageSwitcher() {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
+      <DropdownMenuTrigger asChild className="!m-0">
         <Button variant="outline" className="flex items-center gap-2">
           <FlagIcon className="h-5 w-5" />
-          <span>{selectedLocale.toUpperCase()}</span>
+          <span>{typeof selectedLocale == "string"? selectedLocale.toUpperCase() : selectedLocale[0].toUpperCase()}</span>
           <ChevronDownIcon className="h-4 w-4" />
         </Button>
       </DropdownMenuTrigger>
