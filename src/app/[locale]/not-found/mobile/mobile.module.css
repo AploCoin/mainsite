@@ -7,14 +7,14 @@
 .heading {
     margin-top: 10vh;
     text-align: center;
-    color: #4C4C4C;
+    color: hsl(var(--foreground));
     font-size: 90px;
     font-weight: 700;
 }
 
 .text {
     text-align: center;
-    color: #4C4C4C;
+    color: hsl(var(--foreground));
     font-size: 26px;
     font-weight: 700;
     margin-top: 3vh;

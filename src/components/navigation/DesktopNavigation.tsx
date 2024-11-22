@@ -6,6 +6,8 @@ import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "../ui/button";
+import { ThemeSwitcher } from "../theme/ThemeSwitcher";
 
 const murecho = Murecho({ subsets: ["latin", "cyrillic"] });
 const open_sans = Open_Sans({ subsets: ["latin", "cyrillic"] });
@@ -27,13 +29,15 @@ export default function DesktopNavigation() {
         className={styles["menu-container"] + " flex flex-row justify-between"}
       >
         <div className="flex flex-row items-center">
-          <Image
-            src="/menu/logo.png"
-            width={6}
-            height={3}
-            alt="AploCoin logo"
-            className={styles.logo}
-          />
+          <Link href={`/${lang}`}>
+            <Image
+              src="/menu/logo.png"
+              width={6}
+              height={3}
+              alt="AploCoin logo"
+              className={styles.logo}
+            />
+          </Link>
           <div className={`flex flex-row ${styles[`${lang}-lang`]}`}>
             <Link
               href={`/${lang}/what-is-aplo`}
@@ -75,15 +79,14 @@ export default function DesktopNavigation() {
           </div>
         </div>
         <div className="flex flex-row">
-          <div style={{ display: "inline-flex", alignItems: "center" }}>
-            <Link href={`/${lang}/donate-aplo-project`} className={`${styles["donate-button"]}`}>
-              <span
-                className={`${styles["donate-text"]} ${open_sans.className}`}
-              >
+          <div style={{ display: "inline-flex", alignItems: "center", columnGap: "1.385vw"}}>
+            <Button className="mr-[1.385vw]">
+              <Link href={`/${lang}/donate-aplo-project`}>
                 {t("donate")}
-              </span>
-            </Link>
+              </Link>
+            </Button>
             <LanguageSwitcher />
+            <ThemeSwitcher />
           </div>
         </div>
       </div>

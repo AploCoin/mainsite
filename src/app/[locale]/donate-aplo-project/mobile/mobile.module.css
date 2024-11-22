@@ -3,7 +3,7 @@
     margin-left: 2vw;
     margin-right: 2vw;
     margin-bottom: 2vh;
-    background: white;
+    background: hsl(var(--secondary));
     display: flex;
     flex-direction: column;
     box-shadow: 0px 2px 4px 0px rgba(50, 50, 93, 0.1);
@@ -13,19 +13,19 @@
     padding-top: 2vh;
     text-align: center;
     font-weight: 600;
-    color: #4C4C4C;
+    color: hsl(var(--foreground));
     font-size: 22px;
 }
 
 .header-text {
-    color: #4C4C4C;
+    color: hsl(var(--foreground));
     font-weight: 400;
     font-size: 16px;
     margin: 2vh 5vw;
 }
 
 .header-link {
-    color: black;
+    color: hsl(var(--accent));
     border-bottom: 1px dashed #b7b7b7;
 }
 
@@ -34,7 +34,7 @@
     margin-left: 2vw;
     margin-right: 2vw;
     margin-bottom: 2vh;
-    background: white;
+    background: hsl(var(--secondary));
     display: flex;
     flex-direction: column;
     box-shadow: 0px 2px 4px 0px rgba(50, 50, 93, 0.1);
@@ -47,31 +47,31 @@
 .info-heading {
     font-size: 20px;
     font-weight: 600;
-    color: #4C4C4C;
+    color: hsl(var(--foreground));
     padding-bottom: 2vh;
 }
 
 .info-instruction {
     font-size: 17px;
     font-weight: 400;
-    color: #4C4C4C;
+    color: hsl(var(--foreground));
     margin-bottom: 1vh;
 }
 
 .token {
     margin-bottom: 2vh;
     padding: 1vh 5vw;
-    background: #EDEFF2;
+    background: hsl(var(--background));
     font-size: 17px;
     font-weight: 700;
-    color: #4C4C4C;
+    color: hsl(var(--foreground));
     word-break: break-all;
 }
 
 .remark {
     font-size: 12px;
     font-weight: 400;
-    color: #4C4C4C;
+    color: hsl(var(--foreground));
 }
 
 .qr-image {

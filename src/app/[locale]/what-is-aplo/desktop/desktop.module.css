@@ -1,5 +1,5 @@
 .page-heading {
-    color: #4C4C4C;
+    color: hsl(var(--foreground));
     font-size: 36px;
     font-weight: 700;
     text-align: center;
@@ -11,7 +11,7 @@
     margin-left: clamp(4vw, 9vw, 10.55vw);
     margin-right: clamp(4vw, 9vw, 10.55vw);
     margin-bottom: 2vh;
-    background: white;
+    background: hsl(var(--secondary));
     display: grid;
     justify-items: center;
     overflow: hidden;
@@ -35,7 +35,7 @@
 .info-heading {
     font-size: 20px;
     font-weight: 600;
-    color: #4C4C4C;
+    color: hsl(var(--foreground));
     padding-top: 10vh;
     padding-bottom: 1vh;
 }
@@ -43,7 +43,7 @@
 .info-text {
     font-size: 17px;
     font-weight: 400;
-    color: #4C4C4C;
+    color: hsl(var(--foreground));
 }
 
 .info-button {

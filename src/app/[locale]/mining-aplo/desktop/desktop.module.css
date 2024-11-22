@@ -2,7 +2,7 @@
     font-weight: 700;
     font-size: 37px;
     text-align: center;
-    color: #4C4C4C;
+    color: hsl(var(--foreground));
     margin-top: 3vh;
 }
 
@@ -10,7 +10,7 @@
     font-weight: 400;
     font-size: 17px;
     text-align: center;
-    color: #4C4C4C;
+    color: hsl(var(--foreground));
     text-align: center;
     margin: 3vh 20vw;
 }
@@ -20,7 +20,7 @@
     margin-left: clamp(4vw, 9vw, 10.55vw);
     margin-right: clamp(4vw, 9vw, 10.55vw);
     margin-bottom: 2vh;
-    background: white;
+    background: hsl(var(--secondary));
     box-shadow: 0px 2px 4px 0px rgba(50, 50, 93, 0.1);
 }
 
@@ -36,18 +36,18 @@
     font-size: 28px;
     text-align: center;
     margin-bottom: 3vh;
-    color: #4C4C4C;
+    color: hsl(var(--foreground));
 }
 
 .section-text {
     font-weight: 400;
     font-size: 17px;
     margin-bottom: 3vh;
-    color: #4C4C4C;
+    color: hsl(var(--foreground));
 }
 
 .section-text-link {
-    border-bottom: 1px solid #4C4C4C;
+    border-bottom: 1px solid hsl(var(--foreground));
 }
 
 .advantages {
@@ -64,7 +64,7 @@
 .advantages-heading {
     font-weight: 400;
     font-size: 24px;
-    color: #4C4C4C;
+    color: hsl(var(--foreground));
     text-align: center;
 }
 
@@ -101,7 +101,7 @@
     margin-bottom: 2vh;
     font-weight: 400;
     font-size: 17px;
-    color: black;
+    color: hsl(var(--accent));
 }
 
 .section-link-span {
@@ -112,7 +112,7 @@
 
 .section-paragraph-heading {
     font-weight: 400;
-    color: #4C4C4C;
+    color: hsl(var(--foreground));
     font-size: 24px;
     margin-bottom: 3vh;
 }

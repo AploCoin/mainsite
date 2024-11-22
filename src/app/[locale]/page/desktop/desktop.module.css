@@ -3,7 +3,7 @@
     margin-left: clamp(4vw, 9vw, 10.55vw);
     margin-right: clamp(4vw, 9vw, 10.55vw);
     margin-bottom: 2vh;
-    background: white;
+    background: hsl(var(--secondary));
     display: grid;
     overflow: hidden;
     grid-template-columns: 1fr 1fr;
@@ -24,14 +24,14 @@
 .right-side-heading {
     font-size: 48px;
     font-weight: bold;
-    color: #4C4C4C;
+    color: hsl(var(--foreground));
     padding-bottom: 2vh;
 }
 
 .right-side-text {
     font-size: 24px;
     font-weight: normal;
-    color: #4C4C4C;
+    color: hsl(var(--foreground));
     padding-bottom: 2vh;
 }
 
@@ -46,7 +46,7 @@
     width: 100%;
     height: 100%;
     border: 5px solid #3380B3;
-    background: white;
+    background: hsl(var(--secondary));
     color: #3380B3;
     font-size: 1.1vw;
     font-weight: bold;
@@ -58,7 +58,7 @@
     margin-left: clamp(4vw, 9vw, 10.55vw);
     margin-right: clamp(4vw, 9vw, 10.55vw);
     margin-bottom: 2vh;
-    background: white;
+    background: hsl(var(--secondary));
     display: grid;
     grid-template-columns: 1fr 1fr;
     box-shadow: 0px 2px 4px 0px rgba(50, 50, 93, 0.1);
@@ -88,7 +88,7 @@
 }
 
 .advantages-info-heading {
-    color: #4C4C4C;
+    color: hsl(var(--foreground));
     font-size: 20px;
     font-weight: 600;
     padding-bottom: 1vh;
@@ -97,7 +97,7 @@
 .advantages-info-text {
     font-size: 17px;
     font-weight: 400;
-    color: #4C4C4C;
+    color: hsl(var(--foreground));
 }
 
 .advantages-info {
@@ -125,7 +125,7 @@
 }
 
 .guides-and-resources, .aplopedia {
-    background: white;
+    background: hsl(var(--secondary));
     box-shadow: 0px 2px 4px 0px rgba(50, 50, 93, 0.1);
 }
 
@@ -133,14 +133,14 @@
     padding-top: 3vh;
     font-size: 28px;
     font-weight: 700;
-    color: #4C4C4C;
+    color: hsl(var(--foreground));
     text-align: center;
 }
 
 .aplopedia-text, .guides-and-resources-text {
     font-size: 17px;
     font-weight: 400;
-    color: #4C4C4C;
+    color: hsl(var(--foreground));
     text-align: center;
     padding: 1vw 3vw;
 }
@@ -152,7 +152,7 @@
     margin: 0 auto;
     display: block;
     border: 5px solid #3380B3;
-    background: white;
+    background: hsl(var(--secondary));
     color: #3380B3;
 }
 
@@ -174,7 +174,7 @@
     margin-left: clamp(4vw, 9vw, 10.55vw);
     margin-right: clamp(4vw, 9vw, 10.55vw);
     margin-bottom: 2vh;
-    background: white;
+    background: hsl(var(--secondary));
     display: grid;
     grid-template-columns: 1fr 1fr;
     box-shadow: 0px 2px 4px 0px rgba(50, 50, 93, 0.1);
@@ -194,8 +194,8 @@
     padding-bottom: -1vh;
     font-size: 28px;
     font-weight: 700;
-    color: #4C4C4C;
-    background: white;
+    color: hsl(var(--foreground));
+    background: hsl(var(--secondary));
     text-align: center;
     padding-top: 3vh;
 }
@@ -219,7 +219,7 @@
 .community-advantage-info-heading {
     font-size: 20px;
     font-weight: 600;
-    color: #4C4C4C;
+    color: hsl(var(--foreground));
     padding-top: 5vh;
     padding-bottom: 1vh;
 }
@@ -227,7 +227,7 @@
 .community-advantage-info-text {
     font-size: 17px;
     font-weight: 400;
-    color: #4C4C4C;
+    color: hsl(var(--foreground));
     padding-bottom: 2vh;
 }
 
@@ -235,7 +235,7 @@
     font-size: 17px;
     font-weight: 700;
     color: #3380B3;
-    background: white;
+    background: hsl(var(--secondary));
     padding: 1vh 3vw;
     border: 5px solid #3380B3;
     margin-bottom: 4vh;

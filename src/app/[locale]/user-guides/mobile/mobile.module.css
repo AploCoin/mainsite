@@ -1,6 +1,6 @@
 .page-heading {
     text-align: center;
-    color: #4C4C4C;
+    color: hsl(var(--foreground));
     margin-top: 2vh;
     font-size: 36px;
     font-weight: 600;
@@ -30,20 +30,20 @@
 .guide-container {
     box-shadow: 0px 2px 4px 0px rgba(50, 50, 93, 0.1);
     margin-bottom: 2vh;
-    background: white;
+    background: hsl(var(--secondary));
 }
 
 .guide-heading {
     margin-left: 5vw;
     padding-top: 3vh;
     margin-right: 5vw;
-    color: #4C4C4C;
+    color: hsl(var(--foreground));
     font-weight: 700;
     font-size: 28px;
 }
 
 .guide-link {
-    color: #4C4C4C;
+    color: hsl(var(--foreground));
     font-weight: 400;
     font-size: 28px;
     text-decoration: underline dashed;

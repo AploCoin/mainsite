@@ -1,7 +1,7 @@
 .page-heading {
     font-weight: 700;
     font-size: 36px;
-    color: #4C4C4C;
+    color: hsl(var(--foreground));
     margin-top: 3vh;
     margin-bottom: 3vh;
     text-align: center;
@@ -10,7 +10,7 @@
 .page-description {
     font-weight: 400;
     font-size: 17px;
-    color: #4C4C4C;
+    color: hsl(var(--foreground));
     margin-bottom: 3vh;
     text-align: center;
 }
@@ -25,7 +25,7 @@
 
 .double-section-right, .double-section-left {
     box-shadow: 0px 2px 4px 0px rgba(50, 50, 93, 0.1);
-    background: white;
+    background: hsl(var(--secondary));
     margin-bottom: 3vh;
 }
 
@@ -43,7 +43,7 @@
 }
 
 .page-link-span {
-    color: #4C4C4C;
+    color: hsl(var(--foreground));
     font-weight: 400;
     font-size: 17px;
     border-bottom: 1px dashed #A1AABB;
@@ -55,7 +55,7 @@
 }
 
 .section-heading {
-    color: #4C4C4C;
+    color: hsl(var(--foreground));
     font-weight: 600;
     font-size: 28px;
     margin-bottom: 3vh;
@@ -68,7 +68,7 @@
 
 .links-heading{
     font-weight: 400;
-    color: black;
+    color: hsl(var(--accent));
     font-size: 20px;
     margin-bottom: 1vh;
 }
@@ -79,7 +79,7 @@
 
 .right-link-heading {
     font-weight: 400;
-    color: black;
+    color: hsl(var(--accent));
     font-size: 24px;
     margin-top: 1vh;
     margin-bottom: 1vh;
@@ -89,7 +89,7 @@
     margin-left: clamp(4vw, 9vw, 10.55vw);
     margin-right: clamp(4vw, 9vw, 10.55vw);
     box-shadow: 0px 2px 4px 0px rgba(50, 50, 93, 0.1);
-    background: white;
+    background: hsl(var(--secondary));
     margin-bottom: 3vh;
 }
 
@@ -106,7 +106,7 @@
 
 .paragraph-text {
     font-weight: 400;
-    color: #4C4C4C;
+    color: hsl(var(--foreground));
     font-size: 17px;
     margin-bottom: 3vh;
 }
@@ -115,7 +115,7 @@
     display: flex;
     font-weight: 400;
     font-size: 17px;
-    color: #4C4C4C;
+    color: hsl(var(--foreground));
     align-items: center;
 }
 

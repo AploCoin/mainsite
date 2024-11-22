@@ -1,6 +1,6 @@
 .page-heading {
     text-align: center;
-    color: #4C4C4C;
+    color: hsl(var(--foreground));
     font-size: 36px;
     font-weight: 600;
     margin-bottom: 2vh;
@@ -11,7 +11,7 @@
     margin-left: 2vw;
     margin-right: 2vw;
     margin-bottom: 2vh;
-    background: white;
+    background: hsl(var(--secondary));
     overflow: hidden;
     box-shadow: 0px 2px 4px 0px rgba(50, 50, 93, 0.1);
     margin-bottom: 3vh;
@@ -19,7 +19,7 @@
 
 .about-heading {
     text-align: center;
-    color: #4C4C4C;
+    color: hsl(var(--foreground));
     margin-top: 3vh;
     font-size: 28px;
     font-weight: 600;
@@ -29,7 +29,7 @@
 .about-text {
     font-size: 17px;
     font-weight: 400;
-    color: #4C4C4C;
+    color: hsl(var(--foreground));
     margin: 3vh 5vw;
 }
 
@@ -46,7 +46,7 @@
     font-size: 17px;
     margin-top: 3vh;
     margin-bottom: 3vh;
-    color: #4C4C4C;
+    color: hsl(var(--foreground));
     margin-left: 10vw;
     white-space: pre-line;
 }

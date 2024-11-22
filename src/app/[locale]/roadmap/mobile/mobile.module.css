@@ -1,5 +1,5 @@
 .page-heading {
-    color: #4C4C4C;
+    color: hsl(var(--foreground));
     font-size: 28px;
     font-weight: 700;
     text-align: center;
@@ -17,7 +17,7 @@
 }
 
 .roadmap-remark {
-    color: #4C4C4C;
+    color: hsl(var(--foreground));
     font-weight: 400;
     font-size: 17px;
     margin-left: 4vw;
@@ -29,7 +29,7 @@
 }
 
 .link-task{
-    color: black;
+    color: hsl(var(--accent));
     font-weight: 500;
 }
 
@@ -53,7 +53,7 @@
     margin-left: 2vw;
     margin-right: 2vw;
     margin-bottom: 2vh;
-    background: white;
+    background: hsl(var(--secondary));
     display: flex;
     flex-direction: column;
     box-shadow: 0px 2px 4px 0px rgba(50, 50, 93, 0.1);
@@ -63,13 +63,13 @@
     text-align: center;
     margin-top: 3vh;
     margin-bottom: 5vh;
-    color: #4C4C4C;
+    color: hsl(var(--foreground));
     font-size: 22px;
     font-weight: 700;
 }
 
 .roadmap-month {
-    color: #4C4C4C;
+    color: hsl(var(--foreground));
     font-size: 20px;
     font-weight: 400;
     margin-left: 10vw;

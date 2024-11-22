@@ -3,7 +3,7 @@
     margin-left: clamp(4vw, 9vw, 10.55vw);
     margin-right: clamp(4vw, 9vw, 10.55vw);
     margin-bottom: 2vh;
-    background: white;
+    background: hsl(var(--secondary));
     overflow: hidden;
     box-shadow: 0px 2px 4px 0px rgba(50, 50, 93, 0.1);
     margin-bottom: 3vh;
@@ -11,7 +11,7 @@
 
 .header-heading {
     text-align: center;
-    color: #4C4C4C;
+    color: hsl(var(--foreground));
     margin-top: 2vh;
     font-size: 28px;
     font-weight: 600;
@@ -20,12 +20,12 @@
 .header-text {
     font-size: 17px;
     font-weight: 400;
-    color: #4C4C4C;
+    color: hsl(var(--foreground));
     margin: 1vh 5vw 3vh;
 }
 
 .header-link {
-    color: black;
+    color: hsl(var(--accent));
     border-bottom: 1px dashed #b7b7b7;
 }
 
@@ -34,7 +34,7 @@
     margin-left: clamp(4vw, 9vw, 10.55vw);
     margin-right: clamp(4vw, 9vw, 10.55vw);
     margin-bottom: 2vh;
-    background: white;
+    background: hsl(var(--secondary));
     overflow: hidden;
     box-shadow: 0px 2px 4px 0px rgba(50, 50, 93, 0.1);
 }
@@ -44,7 +44,7 @@
 }
 
 .info-heading {
-    color: #4C4C4C;
+    color: hsl(var(--foreground));
     font-size: 24px;
     font-weight: 700;
     padding-bottom: 2vh;
@@ -53,7 +53,7 @@
 .info-instruction {
     font-size: 17px;
     font-weight: 400;
-    color: #4C4C4C;
+    color: hsl(var(--foreground));
     margin-bottom: 2vh;
 }
 
@@ -64,15 +64,15 @@
 .token {
     margin-bottom: 2vh;
     padding: 1vh 5vw;
-    background: #EDEFF2;
+    background: hsl(var(--background));
     font-size: 17px;
     font-weight: 700;
-    color: #4C4C4C;
+    color: hsl(var(--foreground));
     word-break: break-all;
 }
 
 .remark {
     font-size: 12px;
     font-weight: 400;
-    color: #4C4C4C;
+    color: hsl(var(--foreground));
 }

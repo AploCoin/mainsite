@@ -7,6 +7,8 @@ import { Murecho } from "next/font/google";
 import { Sheet, SheetContent, SheetHeader, SheetTrigger } from "@/components/ui/sheet";
 import LanguageSwitcher from "../language/LanguageSwitcher";
 import { clsx } from "clsx";
+import { Button } from "@/components/ui/button";
+import { ThemeSwitcher } from "../theme/ThemeSwitcher";
 
 const murecho = Murecho({ subsets: ["latin", "cyrillic"] });
 
@@ -60,41 +62,36 @@ export default function MobileNavigation() {
                 width={24}
                 height={16}
                 alt="Icon open menu"
-                className="w-[9vw]"
+                className="w-[7vw]"
               />
             </button>
           </SheetTrigger>
           <SheetContent side="right" className="w-[280px] sm:w-[360px]">
             <SheetHeader className="space-y-6">
               <div className="flex flex-row items-center justify-between">
-                <Link
-                  href={`/${lang}/donate-aplo-project`}
-                  className="flex items-center justify-center w-auto rounded-sm px-3 py-1"
-                  style={{ background: "rgb(51, 128, 179)" }}
-                  onClick={closeMenu}
-                >
-                  <span
-                    className={clsx(
-                      murecho.className,
-                      "h-full !w-auto size-[clamp(10px,1vw,64px)] font-bold text-center uppercase"
-                    )}
-                    style={{ color: "rgb(255, 255, 255)" }}
-                  >
-                    {t("donate")}
-                  </span>
-                </Link>
                 <LanguageSwitcher />
+                <ThemeSwitcher />
               </div>
               <nav className="flex flex-col space-y-4">
-                {menuItems.map((item) => (
+                <Button>
                   <Link
-                    key={item.title}
-                    href={item.url}
-                    className={clsx(murecho.className, "font-medium")}
+                    href={`/${lang}/donate-aplo-project`}
                     onClick={closeMenu}
                   >
-                    {item.title}
+                    {t("donate")}
                   </Link>
+                </Button>
+                {menuItems.map((item) => (
+                  <Button variant="outline">
+                    <Link
+                      key={item.title}
+                      href={item.url}
+                      className={clsx(murecho.className, "font-medium")}
+                      onClick={closeMenu}
+                    >
+                      {item.title}
+                    </Link>
+                  </Button>
                 ))}
               </nav>
             </SheetHeader>

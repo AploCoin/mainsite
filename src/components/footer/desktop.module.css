@@ -44,14 +44,14 @@
   flex-direction: column;
 }
 .nav-container h3 {
-  color: rgb(255, 255, 255);
+  color: white;
   font-family: var(--font-murecho);
   font-size: clamp(12px, 1.66vw, 86px);
   font-weight: 400;
 }
 
 .nav-container a {
-  color: rgb(255, 255, 255);
+  color: white;
   font-family: var(--font-murecho);
   font-size: clamp(9px, 1.171vw, 64px);
   font-weight: 400;
