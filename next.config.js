@@ -10,10 +10,7 @@ var nextConfig = {
   output: 'export',
   images: {
     unoptimized: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
+  }
 }
 
 //module.exports = withNextIntl(nextConfig);
@@ -37,9 +34,9 @@ if (isGithubActions) {
     },
     assetPrefix: assetPrefix,
     basePath: basePath,
-    typescript: {
-      ignoreBuildErrors: true,
-    }
+    eslint: {
+      ignoreDuringBuilds: true,
+    },
   }
 }
 
