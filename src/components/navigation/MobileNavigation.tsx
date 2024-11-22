@@ -21,7 +21,7 @@ export default function MobileNavigation() {
   const pathname = usePathname();
   const lang = pathname.substring(1, 3);
 
-  const closeMenu = () => setTimeout(() => setOpen(false), 300);
+  const closeMenu = () => setOpen(false);
 
   useEffect(() => {
     if (mainComponentRef.current) {
@@ -40,10 +40,10 @@ export default function MobileNavigation() {
 
   return (
     <>
-      <div style={{ height: `${mainComponentHeight / 2}px`, marginBottom: "1.35vh" }}></div>
+      <div style={{ height: `${mainComponentHeight}px`, marginBottom: "1.35vh" }}></div>
       <div
         ref={mainComponentRef}
-        className="flex flex-column bg-white justify-between items-center px-[3.73vw] z-10 w-full fixed top-0"
+        className="flex flex-column bg-secondary justify-between items-center px-[3.73vw] z-10 w-full fixed top-0"
       >
         <Link href={`/${lang}`} onClick={closeMenu}>
           <Image
@@ -73,25 +73,25 @@ export default function MobileNavigation() {
                 <ThemeSwitcher />
               </div>
               <nav className="flex flex-col space-y-4">
-                <Button>
-                  <Link
+                <Link
                     href={`/${lang}/donate-aplo-project`}
                     onClick={closeMenu}
-                  >
+                 >
+                  <Button className="w-full">
                     {t("donate")}
-                  </Link>
-                </Button>
-                {menuItems.map((item) => (
-                  <Button variant="outline">
-                    <Link
-                      key={item.title}
-                      href={item.url}
-                      className={clsx(murecho.className, "font-medium")}
-                      onClick={closeMenu}
-                    >
-                      {item.title}
-                    </Link>
                   </Button>
+                </Link>
+                {menuItems.map((item) => (
+                  <Link
+                    key={item.title}
+                    href={item.url}
+                    className={clsx(murecho.className, "font-medium")}
+                    onClick={closeMenu}
+                  >
+                    <Button variant="outline" className="w-full">
+                        {item.title}
+                    </Button>
+                  </Link>
                 ))}
               </nav>
             </SheetHeader>

@@ -1,5 +1,7 @@
 import { ReactNode } from "react";
 import { ThemeProvider } from "next-themes";
+import { Toaster } from "@/components/ui/toaster"
+
 
 type Props = {
   children: ReactNode;
@@ -12,6 +14,7 @@ export default function RootLayout({ children, params }: Props) {
       <body>
       <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
         {children}
+        <Toaster />
       </ThemeProvider>
       </body>
     </html>

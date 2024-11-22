@@ -24,7 +24,7 @@ export default function LanguageSwitcher() {
     if (locale !== selectedLocale) {
       setSelectedLocale(locale);
       const updatedPathname = `/${locale}${pathname.substring(3)}`;
-      router.replace(updatedPathname);
+      router.push(updatedPathname);
     }
   };
 

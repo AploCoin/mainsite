@@ -1,12 +1,31 @@
 {
   "Menu": {
-    "whatIsAplo": "What is Aplo",
+    "whatIsAplo": "What is APLO",
     "mining": "Mining",
     "faq": "FAQ",
     "about": "About",
     "roadmap": "Roadmap",
     "userGuides": "User Guides",
-    "donate": "Donate"
+    "donate": "Donate",
+    "start-mining": "Start mining APLO cryptocurrency",
+    "connectWallet": "Connect Wallet",
+    "connected": "Connected",
+    "addNetwork": "Add APLO Network",
+    "addToken": "Add APLO Token",
+    
+    "error": "Error",
+    "success": "Success",
+    "metamaskNotInstalled": "MetaMask is not installed",
+    "walletConnected": "Wallet connected successfully",
+    "networkAdded": "APLO Network added successfully",
+    "networkSwitched": "Switched to APLO Network",
+    "tokenAdded": "APLO Token added successfully",
+    "switchNetworkFirst": "Please switch to APLO Network first",
+    "wrongNetwork": "Wrong network selected. Please switch to APLO Network",
+    "networkError": "Network error occurred",
+    "connectionError": "Connection error occurred",
+    "copySuccess": "Copied to clipboard"
+
   },
   "Footer": {
     "privateDecentralized": "Private, decentralized",
