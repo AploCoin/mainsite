@@ -17,6 +17,8 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { useToast } from "@/hooks/use-toast";
+import React from "react";
+import { PickaxeIcon, HandCoinsIcon } from "lucide-react";
 
 declare global {
   interface Window {
@@ -33,12 +35,6 @@ const APLO_NETWORK = {
     symbol: "GAPLO",
     decimals: 18,
   },
-};
-
-const APLO_TOKEN = {
-  address: "0x0000000000000000000000000000000000001235",
-  symbol: "APLO",
-  decimals: 18,
 };
 
 export default function DesktopNavigation() {
@@ -70,7 +66,7 @@ export default function DesktopNavigation() {
 
   const getCurrentChainId = async () => {
     try {
-      const chainId = await window.ethereum.request({ 
+      const chainId = await window.ethereum.request({
         method: 'eth_chainId'
       });
       return chainId;
@@ -78,25 +74,25 @@ export default function DesktopNavigation() {
       return null;
     }
   };
-  
+
   const switchToAploNetwork = async () => {
     try {
       if (!window.ethereum) return false;
-  
+
       const currentChainId = await getCurrentChainId();
       if (currentChainId === APLO_NETWORK.chainId) return true;
-  
+
       await window.ethereum.request({
         method: "wallet_switchEthereumChain",
         params: [{ chainId: APLO_NETWORK.chainId }],
       });
-  
+
       toast({
-        title: t("success"), 
+        title: t("success"),
         description: t("networkSwitched"),
       });
       return true;
-  
+
     } catch (err: unknown) {
       // Error code 4902 means the chain hasn't been added yet
       if ((err as any).code === 4902) {
@@ -121,17 +117,17 @@ export default function DesktopNavigation() {
       const error = err as Error;
       toast({
         variant: "destructive",
-        title: t("error"), 
+        title: t("error"),
         description: error.message,
       });
       return false;
     }
   };
-  
-  const addAploToken = async () => {
+
+  const addToken = async (contractId: string, name: string) => {
     try {
       if (!window.ethereum) return;
-  
+
       // Verify and switch to Aplo network first
       const switched = await switchToAploNetwork();
       if (!switched) {
@@ -142,7 +138,7 @@ export default function DesktopNavigation() {
         });
         return;
       }
-  
+
       // Double check we're on the right network
       const currentChainId = await getCurrentChainId();
       if (currentChainId !== APLO_NETWORK.chainId) {
@@ -153,18 +149,22 @@ export default function DesktopNavigation() {
         });
         return;
       }
-  
+
       await window.ethereum.request({
         method: "wallet_watchAsset",
         params: {
           type: "ERC20",
-          options: APLO_TOKEN,
+          options: {
+            address: contractId,
+            symbol: name,
+            decimals: 18,
+          },
         },
       });
-  
+
       toast({
         title: t("success"),
-        description: t("tokenAdded"), 
+        description: t("tokenAdded"),
       });
     } catch (err: unknown) {
       const error = err as Error;
@@ -185,16 +185,16 @@ export default function DesktopNavigation() {
       }}
     >
       <div
-        className={styles["menu-container"] + " flex flex-row justify-between"}
+        className="flex flex-row justify-between min-[6.83vh] mt-[8.49vh] mb-[1.56vh] shadow-sm bg-secondary px-[2.01vw] py-[4px]"
       >
         <div className="flex flex-row items-center">
           <Link href={`/${lang}`}>
             <Image
               src="/menu/logo.png"
-              width={6}
-              height={3}
+              width={64}
+              height={64}
               alt="AploCoin logo"
-              className={styles.logo}
+              className="mr-4 cursor-pointer"
             />
           </Link>
           <div
@@ -203,20 +203,38 @@ export default function DesktopNavigation() {
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger>Crypto</NavigationMenuTrigger>
+                  <NavigationMenuTrigger>{t('crypto')}</NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2">
+                    <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+
+                      <li className="row-span-3">
+                        <NavigationMenuLink asChild>
+                          <a
+                            className="flex h-full w-full select-none flex-col justify-end rounded-md p-6 no-underline outline-none focus:shadow-md bg-background  hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                            href={`/${lang}/mining-aplo`}
+                          >
+                            <PickaxeIcon className="h-6 w-6" />
+                            <div className="mb-2 mt-4 text-lg font-medium">
+                              {t("mining")}
+                            </div>
+                            <p className="text-sm leading-tight text-muted-foreground">
+                              {t("start-mining")}
+                            </p>
+                          </a>
+                        </NavigationMenuLink>
+                      </li>
+
                       <li className="col-span-1">
                         <NavigationMenuLink asChild>
                           <Button
                             variant="outline"
                             onClick={addAploNetwork}
                             className={cn(
-                              "w-full block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                              "h-auto w-full block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-left"
                             )}
                           >
                             <div className="text-sm font-medium leading-none">
-                              Add APLO Network
+                              {t('addNetwork')}
                             </div>
                           </Button>
                         </NavigationMenuLink>
@@ -226,67 +244,120 @@ export default function DesktopNavigation() {
                         <NavigationMenuLink asChild>
                           <Button
                             variant="outline"
-                            onClick={addAploToken}
+                            onClick={() => { addToken("0x0000000000000000000000000000000000001235", "APLO") }}
                             className={cn(
-                              "w-full block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                              "h-auto w-full block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-left"
                             )}
                           >
                             <div className="text-sm font-medium leading-none">
-                              Add APLO Token
+                              {t('addAploToken')}
                             </div>
+                            <p className="text-sm font-normal leading-tight text-muted-foreground">
+                              TEST
+                            </p>
+                          </Button>
+                        </NavigationMenuLink>
+                      </li>
+                      <li className="col-span-1">
+                        <NavigationMenuLink asChild>
+                          <Button
+                            variant="outline"
+                            onClick={() => { addToken("0x0000000000000000000000000000000000001234", "GAPLO") }}
+                            className={cn(
+                              "h-auto w-full block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-left"
+                            )}
+                          >
+                            <div className="text-sm font-medium leading-none">
+                              {t('addGaploToken')}
+                            </div>
+                            <p className="text-sm font-normal leading-tight text-muted-foreground">
+                              TEST
+                            </p>
                           </Button>
                         </NavigationMenuLink>
                       </li>
 
-                      <li className="col-span-2">
-                        <NavigationMenuLink asChild>
-                          <Link
-                            href={`/${lang}/mining-aplo`}
-                            className={cn(
-                              "block border border-input bg-background shadow-sm select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                            )}
-                          >
-                            <div className="text-sm font-medium leading-none">
-                              {t("mining")}
-                            </div>
-                            <p className="line-clamp-2 text-sm leading-snug">
-                              {t("start-mining")}
-                            </p>
-                          </Link>
-                        </NavigationMenuLink>
-                      </li>
                     </ul>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
-                  <Link href={`/${lang}/what-is-aplo`} legacyBehavior passHref>
-                    <NavigationMenuLink
-                      className={navigationMenuTriggerStyle()}
-                    >
-                      {t("whatIsAplo")}
-                    </NavigationMenuLink>
-                  </Link>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <Link href={`/${lang}/faq`} legacyBehavior passHref>
-                    <NavigationMenuLink
-                      className={navigationMenuTriggerStyle()}
-                    >
-                      {t("faq")}
-                    </NavigationMenuLink>
-                  </Link>
+                  <NavigationMenuTrigger>{t('aboutAplo')}</NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]" style={{ gridAutoFlow: "dense" }} >
+                      <li className="row-span-3">
+                        <NavigationMenuLink asChild>
+                          <a
+                            className="flex h-full w-full select-none flex-col justify-end rounded-md p-6 no-underline outline-none focus:shadow-md bg-background  hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                            href={`/${lang}/what-is-aplo`}
+                          >
+                            <HandCoinsIcon className="h-6 w-6" />
+                            <div className="mb-2 mt-4 text-lg font-medium">
+                              {t("whatIsAplo")}
+                            </div>
+                            <p className="text-sm leading-tight text-muted-foreground">
+                              TEST
+                            </p>
+                          </a>
+                        </NavigationMenuLink>
+                      </li>
+                      <NavigationMenuLink asChild>
+                        <Link href={`/${lang}/faq`} passHref>
+                          <Button
+                            variant="outline"
+                            className={cn(
+                              "h-auto w-full block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-left"
+                            )}
+                          >
+                            <div className="text-sm font-medium leading-none">
+                              {t("faq")}
+                            </div>
+                            <p className="text-sm font-normal leading-tight text-muted-foreground">
+                              TEST
+                            </p>
+                          </Button>
+                        </Link>
+                      </NavigationMenuLink>
+
+                      <NavigationMenuLink asChild>
+                        <Link href={`/${lang}/about-aplo`} passHref>
+                          <Button
+                            variant="outline"
+                            className={cn(
+                              "h-auto w-full block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-left"
+                            )}
+                          >
+                            <div className="text-sm font-medium leading-none">
+                              {t("about")}
+                            </div>
+                            <p className="text-sm font-normal leading-tight text-muted-foreground">
+                              TEST
+                            </p>
+                          </Button>
+                        </Link>
+                      </NavigationMenuLink>
+
+                      <NavigationMenuLink asChild>
+                        <Link href={`/${lang}/user-guides`} passHref>
+                          <Button
+                            variant="outline"
+                            className={cn(
+                              "h-auto w-full block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-left"
+                            )}
+                          >
+                            <div className="text-sm font-medium leading-none">
+                              {t("userGuides")}
+                            </div>
+                            <p className="text-sm font-normal leading-tight text-muted-foreground">
+                              TEST
+                            </p>
+                          </Button>
+                        </Link>
+                      </NavigationMenuLink>
+                    </ul>
+                  </NavigationMenuContent>
                 </NavigationMenuItem>
 
-                <NavigationMenuItem>
-                  <Link href={`/${lang}/about-aplo`} legacyBehavior passHref>
-                    <NavigationMenuLink
-                      className={navigationMenuTriggerStyle()}
-                    >
-                      {t("about")}
-                    </NavigationMenuLink>
-                  </Link>
-                </NavigationMenuItem>
 
                 <NavigationMenuItem>
                   <Link href={`/${lang}/roadmap`} legacyBehavior passHref>
@@ -294,16 +365,6 @@ export default function DesktopNavigation() {
                       className={navigationMenuTriggerStyle()}
                     >
                       {t("roadmap")}
-                    </NavigationMenuLink>
-                  </Link>
-                </NavigationMenuItem>
-
-                <NavigationMenuItem>
-                  <Link href={`/${lang}/user-guides`} legacyBehavior passHref>
-                    <NavigationMenuLink
-                      className={navigationMenuTriggerStyle()}
-                    >
-                      {t("userGuides")}
                     </NavigationMenuLink>
                   </Link>
                 </NavigationMenuItem>

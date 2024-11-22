@@ -11,7 +11,8 @@
     "connectWallet": "Connect Wallet",
     "connected": "Connected",
     "addNetwork": "Add APLO Network",
-    "addToken": "Add APLO Token",
+    "addAploToken": "Add APLO Token",
+    "addGaploToken": "Add APLO Token",
     
     "error": "Error",
     "success": "Success",
@@ -24,7 +25,10 @@
     "wrongNetwork": "Wrong network selected. Please switch to APLO Network",
     "networkError": "Network error occurred",
     "connectionError": "Connection error occurred",
-    "copySuccess": "Copied to clipboard"
+    "copySuccess": "Copied to clipboard",
+
+    "crypto": "Crypto",
+    "aboutAplo": "About APLO"
 
   },
   "Footer": {

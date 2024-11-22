@@ -69,7 +69,10 @@ const config: Config = {
   				border: 'hsl(var(--sidebar-border))',
   				ring: 'hsl(var(--sidebar-ring))'
   			}
-  		}
+  		},
+		boxShadow: {
+			'custom': '0px 2px 4px 0px rgba(50, 50, 93, 0.1)',
+		},
   	}
   },
   plugins: [require("tailwindcss-animate")],

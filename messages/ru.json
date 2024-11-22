@@ -6,7 +6,29 @@
     "about": "О нас",
     "roadmap": "Дорожная карта",
     "userGuides": "Руководства пользователя",
-    "donate": "Донат"
+    "donate": "Донат",
+    "start-mining": "Начать майнинг криптовалюты APLO",
+    "connectWallet": "Подключить кошелек",
+    "connected": "Подключено",
+    "addNetwork": "Добавить сеть APLO",
+    "addAploToken": "Добавить токен APLO",
+    "addGaploToken": "Добавить токен APLO",
+  
+    "error": "Ошибка",
+    "success": "Успешно",
+    "metamaskNotInstalled": "MetaMask не установлен",
+    "walletConnected": "Кошелек успешно подключен",
+    "networkAdded": "Сеть APLO успешно добавлена",
+    "networkSwitched": "Переключено на сеть APLO",
+    "tokenAdded": "Токен APLO успешно добавлен",
+    "switchNetworkFirst": "Пожалуйста, сначала переключитесь на сеть APLO",
+    "wrongNetwork": "Выбрана неверная сеть. Пожалуйста, переключитесь на сеть APLO",
+    "networkError": "Произошла ошибка сети",
+    "connectionError": "Произошла ошибка подключения",
+    "copySuccess": "Скопировано в буфер обмена",
+  
+    "crypto": "Крипто",
+    "aboutAplo": "О APLO"
   },
   "Footer": {
     "privateDecentralized": "Приватная, децентрализованная",
