@@ -103,7 +103,7 @@ export default function Desktop() {
                 <img src="/main/community-image-3.png"
                     className={`${styles["community-image3"]} ${styles["community-image-right"]}`}/>
             </section>
-            <section className={styles['main-container']}>
+            <section className="mb-[2vh] flex justify-center bg-secondary p-2" style={{marginLeft: "clamp(4vw, 9vw, 10.55vw)", marginRight: "clamp(4vw, 9vw, 10.55vw)"}}>
                 <Crypto />
             </section>
         </>
