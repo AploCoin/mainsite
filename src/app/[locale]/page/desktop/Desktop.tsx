@@ -3,6 +3,7 @@ import styles from "./desktop.module.css";
 import {useTranslations} from "next-intl";
 import { usePathname } from 'next/navigation';
 import Link from "next/link";
+import Crypto from '@/components/crypto/component';
 
 const murecho = Murecho({subsets: ['latin', 'cyrillic']});
 
@@ -101,6 +102,9 @@ export default function Desktop() {
                 </div>
                 <img src="/main/community-image-3.png"
                     className={`${styles["community-image3"]} ${styles["community-image-right"]}`}/>
+            </section>
+            <section className={styles['main-container']}>
+                <Crypto />
             </section>
         </>
     );

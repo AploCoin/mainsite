@@ -1,4 +1,3 @@
-import styles from "./desktop.module.css";
 import LanguageSwitcher from "../language/LanguageSwitcher";
 import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
@@ -198,7 +197,7 @@ export default function DesktopNavigation() {
             />
           </Link>
           <div
-            className={`flex flex-row items-center ${styles[`${lang}-lang`]}`}
+            className={`flex flex-row items-center`}
           >
             <NavigationMenu>
               <NavigationMenuList>
