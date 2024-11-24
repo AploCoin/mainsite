@@ -38,7 +38,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
-import cn from "classnames";
+import { cn } from "@/lib/utils";
 
 type Block = {
   number: number;
