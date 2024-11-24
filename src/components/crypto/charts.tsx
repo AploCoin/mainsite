@@ -20,8 +20,6 @@ import {
   ChartContainer,
   ChartLegend,
   ChartLegendContent,
-  ChartTooltip,
-  ChartTooltipContent,
 } from "@/components/ui/chart";
 import {
   Select,
@@ -117,7 +115,7 @@ export const Charts = () => {
     transactions: block.transactions,
   }));
   return (
-    <Tabs defaultValue="difficulty" className="mr-4">
+    <Tabs defaultValue="difficulty" className="mr-4 py-4">
       <div className="flex row justify-between">
         <TabsList>
           <TabsTrigger value="difficulty">Сложность</TabsTrigger>

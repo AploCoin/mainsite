@@ -4,14 +4,17 @@ import {
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
 import { Charts } from "./charts";
+import Info from "./info";
 
 const BlockExplorer = () => {  return (
     <ResizablePanelGroup direction="horizontal">
-      <ResizablePanel defaultSize={75}>
+      <ResizablePanel defaultSize={60}>
         <Charts />
       </ResizablePanel>
       <ResizableHandle withHandle />
-      <ResizablePanel defaultSize={25}></ResizablePanel>
+      <ResizablePanel defaultSize={40}>
+        <Info />
+      </ResizablePanel>
     </ResizablePanelGroup>
   );
 };

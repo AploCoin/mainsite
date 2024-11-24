@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@next-tools/dynamic": "^0.0.11",
+    "@radix-ui/react-checkbox": "^1.1.2",
     "@radix-ui/react-dialog": "^1.1.2",
     "@radix-ui/react-dropdown-menu": "^2.1.2",
     "@radix-ui/react-navigation-menu": "^1.2.1",
@@ -20,6 +21,7 @@
     "@radix-ui/react-tabs": "^1.1.1",
     "@radix-ui/react-toast": "^1.2.2",
     "@radix-ui/react-tooltip": "^1.1.4",
+    "@tanstack/react-table": "^8.20.5",
     "autoprefixer": "^10.4.19",
     "class-variance-authority": "^0.7.0",
     "ethers": "^6.13.4",
