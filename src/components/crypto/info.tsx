@@ -5,10 +5,14 @@ import { useEffect, useState, useCallback } from "react";
 import { ethers } from "ethers";
 import {
   ColumnDef,
+  ColumnFiltersState,
   SortingState,
+  VisibilityState,
   flexRender,
   getCoreRowModel,
+  getFilteredRowModel,
   getPaginationRowModel,
+  getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
 import { ChevronDown, MoreHorizontal } from "lucide-react";
@@ -16,10 +20,16 @@ import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
+  DropdownMenuPortal,
   DropdownMenuSeparator,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
+  DropdownMenuCheckboxItem,
 } from "@/components/ui/dropdown-menu";
 import {
   Table,
@@ -38,10 +48,14 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
+import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
+import {formatHashrate} from "./utils";
 
 type Block = {
-  number: number;
+  number: string;
+  difficulty: string;
+  gasused: string;
   miner: string;
   timestamp: string;
 };
@@ -52,6 +66,20 @@ export const columns: ColumnDef<Block>[] = [
     header: "Block Number",
     cell: ({ row }) => (
       <div className="capitalize">{row.getValue("number")}</div>
+    ),
+  },
+  {
+    accessorKey: "difficulty",
+    header: "Difficulty",
+    cell: ({ row }) => (
+      <div className="capitalize">{row.getValue("difficulty")}</div>
+    ),
+  },
+  {
+    accessorKey: "gasused",
+    header: "Gas used",
+    cell: ({ row }) => (
+      <div className="capitalize">{row.getValue("gasused")}%</div>
     ),
   },
   {
@@ -128,17 +156,31 @@ export default function Info() {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [maxBlocks, setMaxBlocks] = useState(20);
   const [customBlockLimit, setCustomBlockLimit] = useState("");
+  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
+    []
+  );
+  const [columnVisibility, setColumnVisibility] =
+    React.useState<VisibilityState>({
+        difficulty: false,
+        gasused: false
+    });
+  const [rowSelection, setRowSelection] = React.useState({});
 
   const fetchLatestBlock = useCallback(async () => {
     const latestBlockNumber = await provider.getBlockNumber();
     const block = await provider.getBlock(latestBlockNumber);
     if (block) {
       setBlocks((prevBlocks) => {
-        if (prevBlocks.length && prevBlocks[0].number === block.number) {
+        if (
+          prevBlocks.length &&
+          Number(prevBlocks[0].number) === block.number
+        ) {
           return prevBlocks;
         }
         const newBlock = {
-          number: block.number,
+          number: block.number.toString(),
+          difficulty: formatHashrate(block.difficulty),
+          gasused: (Number(block.gasUsed) / Number(block.gasLimit) * 100).toFixed(2),
           miner: block.miner,
           timestamp: block.timestamp.toString(),
         };
@@ -161,7 +203,9 @@ export default function Info() {
     const formattedBlocks = blocks
       .filter((block): block is ethers.Block => block !== null)
       .map((block) => ({
-        number: block.number,
+        number: block.number.toString(),
+        difficulty: formatHashrate(block.difficulty),
+        gasused: (Number(block.gasUsed) / Number(block.gasLimit) * 100).toFixed(2),
         miner: block.miner,
         timestamp: block.timestamp.toString(),
       }));
@@ -177,10 +221,20 @@ export default function Info() {
   const table = useReactTable({
     data: blocks,
     columns,
-    state: { sorting },
     onSortingChange: setSorting,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
+    onColumnFiltersChange: setColumnFilters,
+    getSortedRowModel: getSortedRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
+    onColumnVisibilityChange: setColumnVisibility,
+    onRowSelectionChange: setRowSelection,
+    state: {
+      sorting,
+      columnFilters,
+      columnVisibility,
+      rowSelection,
+    },
   });
 
   return (
@@ -188,53 +242,98 @@ export default function Info() {
       <div className="flex items-center justify-end py-4">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="outline">
-              Block Limit: {maxBlocks} <ChevronDown className="ml-2 h-4 w-4" />
-            </Button>
+            <Button variant="outline">Settings</Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-56">
-            <DropdownMenuLabel>Choose Block Limit</DropdownMenuLabel>
+            <DropdownMenuLabel>Settings</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            {[100, 500, 1000, 2000].map((limit) => (
-              <>
-                <DropdownMenuItem
-                  key={limit}
-                  onClick={async () => {
-                    setMaxBlocks(limit);
-                    fetchInitialBlocks();
-                  }}
-                >
-                  {limit} blocks
-                </DropdownMenuItem>
-                <DropdownMenuSeparator className="bg-border" />
-              </>
-            ))}
+            <DropdownMenuGroup>
+              {table
+                .getAllColumns()
+                .filter((column) => column.getCanHide())
+                .map((column) => {
+                  return (
+                    <DropdownMenuCheckboxItem
+                      key={column.id}
+                      className="capitalize"
+                      checked={column.getIsVisible()}
+                      onCheckedChange={(value) =>
+                        column.toggleVisibility(!!value)
+                      }
+                    >
+                      {column.id}
+                    </DropdownMenuCheckboxItem>
+                  );
+                })}
+            </DropdownMenuGroup>
+            <DropdownMenuSeparator />
+            <DropdownMenuGroup>
+              <DropdownMenuSub>
+                <DropdownMenuSubTrigger>
+                  Block Limit: {maxBlocks}
+                </DropdownMenuSubTrigger>
+                <DropdownMenuPortal>
+                  <DropdownMenuSubContent>
+                    <DropdownMenuLabel>Choose Block Limit</DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    {[100, 500, 1000, 2000].map((limit) => (
+                      <>
+                        <DropdownMenuItem
+                          key={limit}
+                          onClick={async () => {
+                            setMaxBlocks(limit);
+                            fetchInitialBlocks();
+                          }}
+                        >
+                          {limit} blocks
+                        </DropdownMenuItem>
+                        <DropdownMenuSeparator className="bg-border" />
+                      </>
+                    ))}
 
-            <div className="p-2">
-              <div className="flex items-center space-x-2">
-                <input
-                  type="number"
-                  value={customBlockLimit}
-                  onChange={(e) => setCustomBlockLimit(e.target.value)}
-                  placeholder="Custom limit"
-                  className="flex h-8 w-full rounded-md border bg-transparent px-3 py-1 text-sm shadow-sm transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
-                />
-                <Button
-                  className="rounded-md border"
-                  variant="secondary"
-                  size="sm"
-                  onClick={() => {
-                    const limit = parseInt(customBlockLimit);
-                    if (limit > 0) {
-                      setMaxBlocks(limit);
-                      fetchInitialBlocks();
-                    }
-                  }}
-                >
-                  Set
-                </Button>
-              </div>
-            </div>
+                    <div className="p-2">
+                      <div className="flex items-center space-x-2">
+                        <input
+                          type="number"
+                          value={customBlockLimit}
+                          onChange={(e) => setCustomBlockLimit(e.target.value)}
+                          placeholder="Custom limit"
+                          className="flex h-8 w-full rounded-md border bg-transparent px-3 py-1 text-sm shadow-sm transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+                        />
+                        <Button
+                          className="rounded-md border"
+                          variant="secondary"
+                          size="sm"
+                          onClick={() => {
+                            const limit = parseInt(customBlockLimit);
+                            if (limit > 0) {
+                              setMaxBlocks(limit);
+                              fetchInitialBlocks();
+                            }
+                          }}
+                        >
+                          Set
+                        </Button>
+                      </div>
+                    </div>
+                  </DropdownMenuSubContent>
+                </DropdownMenuPortal>
+              </DropdownMenuSub>
+            </DropdownMenuGroup>
+            <DropdownMenuSeparator />
+            <Input
+              placeholder="Filter blocks..."
+              value={
+                (table.getColumn("number")?.getFilterValue() as string) ?? ""
+              }
+              onChange={(event) => {
+                console.log(event.target.value);
+                table
+                  .getColumn("number")
+                  ?.setFilterValue(event.target.value.toString());
+              }}
+              className="max-w-sm"
+            />
           </DropdownMenuContent>
         </DropdownMenu>
       </div>

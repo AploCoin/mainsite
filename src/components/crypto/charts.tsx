@@ -28,19 +28,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { formatHashrate } from "./utils";
 
-function formatHashrate(difficulty: any): string {
-  const units = ["H/s", "KH/s", "MH/s", "GH/s", "TH/s", "PH/s"];
-  let value = Number(difficulty);
-  let unitIndex = 0;
-
-  while (value >= 1000 && unitIndex < units.length - 1) {
-    value /= 1000;
-    unitIndex++;
-  }
-
-  return `${value.toFixed(2)} ${units[unitIndex]}`;
-}
 const chartConfig = {
   difficulty: {
     label: "Difficulty",
@@ -89,7 +78,7 @@ export const Charts = () => {
               gasUsed: (
                 (Number(block.gasUsed) / Number(block.gasLimit)) *
                 100
-              ).toString(),
+              ).toFixed(2),
               transactions: block.transactions.length,
             };
           }
@@ -111,7 +100,7 @@ export const Charts = () => {
 
   const gasData = blocks.map((block) => ({
     name: `${block.number}`,
-    gasused: Math.min(100, parseFloat(Number(block.gasUsed).toFixed(2))),
+    gasused: block.gasUsed ,
     transactions: block.transactions,
   }));
   return (
