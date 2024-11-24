@@ -191,7 +191,7 @@ export default function Info() {
           : updatedBlocks;
       });
     }
-  }, [maxBlocks]);
+  }, [maxBlocks, customBlockLimit]);
 
   const fetchInitialBlocks = useCallback(async () => {
     const latestBlockNumber = await provider.getBlockNumber();
@@ -210,7 +210,7 @@ export default function Info() {
         timestamp: block.timestamp.toString(),
       }));
     setBlocks(formattedBlocks);
-  }, [maxBlocks]);
+  }, [maxBlocks, customBlockLimit]);
 
   useEffect(() => {
     fetchInitialBlocks();
@@ -306,6 +306,7 @@ export default function Info() {
                           size="sm"
                           onClick={() => {
                             const limit = parseInt(customBlockLimit);
+                            console.log(limit);
                             if (limit > 0) {
                               setMaxBlocks(limit);
                               fetchInitialBlocks();
