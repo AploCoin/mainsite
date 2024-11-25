@@ -51,6 +51,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import {formatHashrate} from "./utils";
+import { useTranslations } from "next-intl";
 
 type Block = {
   number: string;
@@ -60,97 +61,104 @@ type Block = {
   timestamp: string;
 };
 
-export const columns: ColumnDef<Block>[] = [
-  {
-    accessorKey: "number",
-    header: "Block Number",
-    cell: ({ row }) => (
-      <div className="capitalize">{row.getValue("number")}</div>
-    ),
-  },
-  {
-    accessorKey: "difficulty",
-    header: "Difficulty",
-    cell: ({ row }) => (
-      <div className="capitalize">{row.getValue("difficulty")}</div>
-    ),
-  },
-  {
-    accessorKey: "gasused",
-    header: "Gas used",
-    cell: ({ row }) => (
-      <div className="capitalize">{row.getValue("gasused")}%</div>
-    ),
-  },
-  {
-    accessorKey: "timestamp",
-    header: "Timestamp",
-    cell: ({ row }) => {
-      const timestamp = parseInt(row.getValue("timestamp"));
-      return new Date(timestamp * 1000).toLocaleString();
-    },
-  },
-  {
-    accessorKey: "miner",
-    header: () => <div className="text-right">Miner</div>,
-    cell: ({ row }) => {
-      const miner = row.getValue("miner") as string;
-      if (!miner) return null;
-      return (
-        <div className="text-right font-medium">{`${miner.slice(
-          0,
-          10
-        )}...${miner.slice(-5)}`}</div>
-      );
-    },
-  },
-  {
-    id: "actions",
-    enableHiding: false,
-    cell: ({ row }) => {
-      const block = row.original;
-
-      return (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="h-8 w-8 p-0">
-              <span className="sr-only">Open menu</span>
-              <MoreHorizontal />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem
-              onClick={() =>
-                navigator.clipboard.writeText(block.number.toString())
-              }
-            >
-              Copy block number
-            </DropdownMenuItem>
-            <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(block.miner)}
-            >
-              Copy miner address
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem
-              onClick={() =>
-                window.open(
-                  `https://explorer.aplocoin.com/block/${block.number}`,
-                  "_blank"
-                )
-              }
-            >
-              View in Explorer
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      );
-    },
-  },
-];
-
 export default function Info() {
+  const t = useTranslations("ChartsInfo");
+
+  const columns: ColumnDef<Block>[] = [
+    {
+      accessorKey: "number",
+      header: t('blocknumber'),
+      cell: ({ row }) => (
+        <div className="capitalize">{row.getValue("number")}</div>
+      ),
+    },
+    {
+      accessorKey: "difficulty",
+      header: t('difficulty'),
+      cell: ({ row }) => (
+        <div className="capitalize">{row.getValue("difficulty")}</div>
+      ),
+    },
+    {
+      accessorKey: "gasused",
+      header: t('gasused'),
+      cell: ({ row }) => (
+        <div className="capitalize">{row.getValue("gasused")}%</div>
+      ),
+    },
+    {
+      accessorKey: "timestamp",
+      header: t('timestamp'),
+      cell: ({ row }) => {
+        const timestamp = parseInt(row.getValue("timestamp"));
+        return new Date(timestamp * 1000).toLocaleString();
+      },
+    },
+    {
+      accessorKey: "miner",
+      header: t('miner'),
+      cell: ({ row }) => {
+        const miner = row.getValue("miner") as string;
+        if (!miner) return null;
+        return (
+          <div className="text-right font-medium">{`${miner.slice(
+            0,
+            10
+          )}...${miner.slice(-5)}`}</div>
+        );
+      },
+    },
+    {
+      id: "actions",
+      enableHiding: false,
+      cell: ({ row }) => {
+        const block = row.original;
+  
+        return (
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" className="h-8 w-8 p-0">
+                <span className="sr-only">{t('openmenu')}</span>
+                <MoreHorizontal />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuLabel>{t('actions')}</DropdownMenuLabel>
+              <DropdownMenuItem
+                onClick={() =>
+                  navigator.clipboard.writeText(block.number.toString())
+                }
+              >
+                {t('copyblocknumber')}
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                onClick={() => navigator.clipboard.writeText(block.miner)}
+              >
+                {t('copyminer')}
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem
+                onClick={() =>
+                  window.open(
+                    `https://explorer.aplocoin.com/block/${block.number}`,
+                    "_blank"
+                  )
+                }
+              >
+                {t('viewexplorer')}
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        );
+      },
+    },
+  ];
+
+
+
+
+
+
   const provider = new ethers.JsonRpcProvider("https://pub1.aplocoin.com");
   const [blocks, setBlocks] = useState<Block[]>([]);
   const [sorting, setSorting] = useState<SortingState>([]);
@@ -238,20 +246,21 @@ export default function Info() {
   });
 
   return (
-    <div className="w-full pl-4">
+    <div className="w-full px-4">
       <div className="flex items-center justify-end py-4">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="outline">Settings</Button>
+            <Button variant="outline">{t('settings')}</Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-56">
-            <DropdownMenuLabel>Settings</DropdownMenuLabel>
+            <DropdownMenuLabel>{t('settings')}</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
               {table
                 .getAllColumns()
                 .filter((column) => column.getCanHide())
-                .map((column) => {
+                .map((column: any) => {
+                  if (column.id === "actions" || !column.columnDef.header) return null;
                   return (
                     <DropdownMenuCheckboxItem
                       key={column.id}
@@ -261,7 +270,7 @@ export default function Info() {
                         column.toggleVisibility(!!value)
                       }
                     >
-                      {column.id}
+                      {column.columnDef.header}
                     </DropdownMenuCheckboxItem>
                   );
                 })}
@@ -270,11 +279,11 @@ export default function Info() {
             <DropdownMenuGroup>
               <DropdownMenuSub>
                 <DropdownMenuSubTrigger>
-                  Block Limit: {maxBlocks}
+                  {t('blocklimit') + " " + maxBlocks}
                 </DropdownMenuSubTrigger>
                 <DropdownMenuPortal>
                   <DropdownMenuSubContent>
-                    <DropdownMenuLabel>Choose Block Limit</DropdownMenuLabel>
+                    <DropdownMenuLabel>{t('choseblocklimit')}</DropdownMenuLabel>
                     <DropdownMenuSeparator />
                     {[100, 500, 1000, 2000].map((limit) => (
                       <>
@@ -285,7 +294,7 @@ export default function Info() {
                             fetchInitialBlocks();
                           }}
                         >
-                          {limit} blocks
+                          {limit + " " + t('blocks')}
                         </DropdownMenuItem>
                         <DropdownMenuSeparator className="bg-border" />
                       </>
@@ -297,7 +306,7 @@ export default function Info() {
                           type="number"
                           value={customBlockLimit}
                           onChange={(e) => setCustomBlockLimit(e.target.value)}
-                          placeholder="Custom limit"
+                          placeholder={t('customlimit')}
                           className="flex h-8 w-full rounded-md border bg-transparent px-3 py-1 text-sm shadow-sm transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                         />
                         <Button
@@ -313,7 +322,7 @@ export default function Info() {
                             }
                           }}
                         >
-                          Set
+                          {t('set')}
                         </Button>
                       </div>
                     </div>
@@ -323,7 +332,7 @@ export default function Info() {
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <Input
-              placeholder="Filter blocks..."
+              placeholder={t('filterblocknumber')}
               value={
                 (table.getColumn("number")?.getFilterValue() as string) ?? ""
               }
@@ -381,7 +390,7 @@ export default function Info() {
                   colSpan={columns.length}
                   className="h-24 text-center"
                 >
-                  No results.
+                  {t('noresult')}
                 </TableCell>
               </TableRow>
             )}

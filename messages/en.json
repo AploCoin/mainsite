@@ -13,7 +13,7 @@
     "addNetwork": "Add APLO Network",
     "addAploToken": "Add APLO Token",
     "addGaploToken": "Add APLO Token",
-    
+
     "error": "Error",
     "success": "Success",
     "metamaskNotInstalled": "MetaMask is not installed",
@@ -29,7 +29,6 @@
 
     "crypto": "Crypto",
     "aboutAplo": "About APLO"
-
   },
   "Footer": {
     "privateDecentralized": "Private, decentralized",
@@ -71,7 +70,7 @@
     "contributeDescription": "Aplo is not simply a currency, it's a decentralized community and exists only thanks to the hundreds of volunteers that dedicate their time to the project. Join us!",
     "contributing": "CONTRIBUTING",
     "researchLab": "Aplo Research Lab (ARL)",
-    "researchLabDescription": "The ARL (Aplo Research Lab) is a very important part of APLO. Researchers and cryptographers from all over the world meet to find new ways to improve Aplo. Read their papers and join them!", 
+    "researchLabDescription": "The ARL (Aplo Research Lab) is a very important part of APLO. Researchers and cryptographers from all over the world meet to find new ways to improve Aplo. Read their papers and join them!",
     "meetCommunity": "Meet the community!",
     "meetCommunityDescription": "The members of the Aplo community are all over the world. You can find us on multiple platforms. Come meet us!",
     "hangouts": "HANGOUTS"
@@ -170,10 +169,11 @@
   "AboutAplo": {
     "pageHeading": "About Aplo",
     "historyHeading": "A Brief History",
-    "historyText1": "Monero was launched in April 2014. It was a fair, pre-announced launch of the CryptoNote reference code. There was no premine or instamine, and no portion of the block reward goes to development. See the original Bitcointalk thread here. The founder, thankful_for_today, proposed some controversial changes that the community disagreed with. A fallout ensued, and the Monero Core Team forked the project with the community following this new Core Team. This Core Team has provided oversight since.",
-    "historyText2": "Aplo has made several large improvements since launch. The blockchain was migrated to a different database structure to provide greater efficiency and flexibility, minimum ring signature sizes were set so that all transactions were private by mandate, and RingCT was implemented to hide the transaction amounts. Nearly all improvements have provided improvements to security or privacy, or they have facilitated use. Aplo continues to develop with goals of privacy and security first, ease of use and efficiency second.",
+    "historyText1": "Once upon a time there was a dream: \"Mining for everyone and no decentralization\", but the dream was distant and difficult to achieve. Huge regards to the Duino Coin, as a main inspiration for the idea of APLO. Aplo is built by one of the core developers of DuinoCoin YeahNotSewerSide after seeing how DuinoCoin's idea could be refined. The project was in a very long development since 2020 until 2024. The main idea for the new blockchain was to enable mining for everyone even people without powerful devices, but to make it trully decentralized, ungovernable and with a proper blockchain. And after long years of research, development, APLO IS FINALLY HERE!",
     "valuesHeading": "Our Values",
-    "valuesIntro": "Aplo is more than just a technology. It’s also what the technology stands for. Some of the important guiding philosophies are listed below.",
+    "valuesIntro": "Aplo is more than just a technology. It’s an idea even a dream once. Some of the important guiding philosophies are listed below.",
+    "simplicityHeading": "Simplicity",
+    "simplicityText": "Aplo is built in a way to be fully compatible with EVM powered networks, which makes the process of integration very smooth and painless. Since everything that ethereum infrastructure can provide will also work on Aplo.",
     "securityHeading": "Security",
     "securityText": "Users must be able to trust Aplo with their transactions, without risk of error or attack. Aplo gives the full block reward to the miners, who are the most critical members of the network who provide this security. Transactions are cryptographically secure using the latest and most resilient encryption tools available.",
     "privacyHeading": "Privacy",
@@ -181,11 +181,13 @@
     "decentralizationHeading": "Decentralization",
     "decentralizationText": "Aplo is committed to providing the highest degree of decentralization in both network security and code development. Its Proof of Work algorithm prevents specialized mining hardware from dominating the network and allows for fair distribution of block rewards. Additionally, Aplo's development and research are conducted via global collaboration, and the project is carried out with utmost transparency. Each development decision is open to public discussion, and every major developer meeting is published online.",
     "technicalInfoHeading": "Technical Info",
-    "technicalInfoText": "Here are listed some basic technical info about Monero. For more in-depth details, consult the library or get in touch with the community.",
+    "technicalInfoText": "Here are listed some basic technical info about Aplo. For more in-depth details, consult the library or get in touch with the community.",
     "powHeading": "Proof of Work",
-    "powText": "Monero uses randomx, an ASIC-resistant and CPU-friendly POW algorithm created by Monero community members, designed to make the use of mining-specific hardware unfeasible. Monero previously used CryptoNight and variations of this algorithm. More info in the GitHub repo.",
-    "emissionCurveHeading": "Emission curve",
-    "emissionCurveText": "To make sure there will always be an incentive to mine Monero and keep it safe, the emission is infinite. There are two main emissions: first, main curve: ~18.132 million coins by the end of May 2022, then, tail curve: 0.6 XMR per 2-minute block, kicks in once main emission is done, translates to 1% inflation decreasing over time (Tail Emission).",
+    "powText": "There are 2 modes of mining in Aplo:",
+    "powText1": "1. Mining blocks with transactions, PoW here is built on top of the basic ethereum PoW, until it went PoW.(In the future the PoW algorithm will be switched in a fork to the RandAplo, similar in an idea to RandomX from Monero)",
+    "powText2": "2. Mining transactions/gas with low perfomance devices",
+    "emissionCurveHeading": "2 Tokens System",
+    "emissionCurveText": "In Aplo there are 2 tokens that power the system. Aplo - which is a native token used like real money and GAplo - Gas Aplo, which is used to pay the fees for transactions.",
     "blocksHeading": "Blocks",
     "blocksText": "A new block is created every ~2 minutes. There is no maximum block size, but instead a block reward penalty and a dynamic block size, to ensure a dynamic scalability.",
     "privacyTechnologiesHeading": "Main privacy enhancing technologies",
@@ -301,5 +303,42 @@
     "basicsQuestion1Heading": "What's the meaning of [technical word]?",
     "basicsQuestion1Text": "The terminology used in Monero can be quite complex, for this reason we have the Moneropedia. A comprehensive list of terms that you often see and their explanation. If you don't know what a word means or you would like to have more info about it, just visit the Moneropedia. Some example of often searched terms are: node, fungbility, view key, pruning.",
     "basicsQuestion1MoreInfo": "More Info: Getting started with Aplo"
+  },
+  "ChartsInfo": {
+    "settings": "Settings",
+    "blocklimit": "Block Limit:",
+    "choseblocklimit": "Choose Block Limit",
+    "blocks": "blocks",
+    "set": "Set",
+    "filterblocknumber": "Filter blocks...",
+    "noresult": "No results.",
+    "customlimit": "Custom Limit",
+    "openmenu": "Open Menu",
+    "copyblocknumber": "Copy Block Number",
+    "copyminer": "Copy miner address",
+    "viewexplorer": "View in Explorer",
+    "actions": "Actions",
+    "blocknumber": "Block Number",
+    "difficulty": "Difficulty",
+    "gasused": "Gas Used",
+    "timestamp": "Timestamp",
+    "miner": "Miner"
+  },
+  "Charts": {
+    "difficulty": "Difficulty",
+    "gasused": "Gas Using",
+    "settings": "Settings",
+    "blockinterval": "Block Interval:",
+    "chooseblockinterval": "Choose Block Interval",
+    "blocks": "blocks",
+    "custominterval": "Custom Interval",
+    "blocklimit": "Block Limit:",
+    "choseblocklimit": "Choose Block Limit",
+    "customlimit": "Custom Limit",
+    "difficultymining": "Difficulty Mining",
+    "blocknum": "Block:",
+    "gasusagetrans": "Gas usage and transaction",
+    "gas": "Gas:",
+    "transactions": "Transactions:"
   }
 }

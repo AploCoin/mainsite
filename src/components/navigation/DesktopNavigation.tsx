@@ -66,7 +66,7 @@ export default function DesktopNavigation() {
   const getCurrentChainId = async () => {
     try {
       const chainId = await window.ethereum.request({
-        method: 'eth_chainId'
+        method: "eth_chainId",
       });
       return chainId;
     } catch (err) {
@@ -91,7 +91,6 @@ export default function DesktopNavigation() {
         description: t("networkSwitched"),
       });
       return true;
-
     } catch (err: unknown) {
       // Error code 4902 means the chain hasn't been added yet
       if ((err as any).code === 4902) {
@@ -183,9 +182,7 @@ export default function DesktopNavigation() {
         maxWidth: "100vw",
       }}
     >
-      <div
-        className="flex flex-row justify-between min-[6.83vh] mt-[8.49vh] mb-[1.56vh] shadow-sm bg-secondary px-[2.01vw] py-[4px]"
-      >
+      <div className="flex flex-row justify-between min-[6.83vh] mt-[8.49vh] mb-[1.56vh] shadow-sm bg-secondary px-[2.01vw] py-[4px]">
         <div className="flex flex-row items-center">
           <Link href={`/${lang}`}>
             <Image
@@ -196,16 +193,13 @@ export default function DesktopNavigation() {
               className="mr-4 cursor-pointer"
             />
           </Link>
-          <div
-            className={`flex flex-row items-center`}
-          >
+          <div className={`flex flex-row items-center`}>
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger>{t('crypto')}</NavigationMenuTrigger>
+                  <NavigationMenuTrigger>{t("crypto")}</NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-
                       <li className="row-span-3">
                         <NavigationMenuLink asChild>
                           <a
@@ -216,7 +210,7 @@ export default function DesktopNavigation() {
                             <div className="mb-2 mt-4 text-lg font-medium">
                               {t("mining")}
                             </div>
-                            <p className="text-sm leading-tight text-muted-foreground">
+                            <p className="text-sm leading-tight ">
                               {t("start-mining")}
                             </p>
                           </a>
@@ -233,7 +227,7 @@ export default function DesktopNavigation() {
                             )}
                           >
                             <div className="text-sm font-medium leading-none">
-                              {t('addNetwork')}
+                              {t("addNetwork")}
                             </div>
                           </Button>
                         </NavigationMenuLink>
@@ -243,15 +237,20 @@ export default function DesktopNavigation() {
                         <NavigationMenuLink asChild>
                           <Button
                             variant="outline"
-                            onClick={() => { addToken("0x0000000000000000000000000000000000001235", "APLO") }}
+                            onClick={() => {
+                              addToken(
+                                "0x0000000000000000000000000000000000001235",
+                                "APLO"
+                              );
+                            }}
                             className={cn(
                               "h-auto w-full block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-left"
                             )}
                           >
                             <div className="text-sm font-medium leading-none">
-                              {t('addAploToken')}
+                              {t("addAploToken")}
                             </div>
-                            <p className="text-sm font-normal leading-tight text-muted-foreground">
+                            <p className="text-sm font-normal leading-tight ">
                               TEST
                             </p>
                           </Button>
@@ -261,29 +260,38 @@ export default function DesktopNavigation() {
                         <NavigationMenuLink asChild>
                           <Button
                             variant="outline"
-                            onClick={() => { addToken("0x0000000000000000000000000000000000001234", "GAPLO") }}
+                            onClick={() => {
+                              addToken(
+                                "0x0000000000000000000000000000000000001234",
+                                "GAPLO"
+                              );
+                            }}
                             className={cn(
                               "h-auto w-full block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-left"
                             )}
                           >
                             <div className="text-sm font-medium leading-none">
-                              {t('addGaploToken')}
+                              {t("addGaploToken")}
                             </div>
-                            <p className="text-sm font-normal leading-tight text-muted-foreground">
+                            <p className="text-sm font-normal leading-tight">
                               TEST
                             </p>
                           </Button>
                         </NavigationMenuLink>
                       </li>
-
                     </ul>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger>{t('aboutAplo')}</NavigationMenuTrigger>
+                  <NavigationMenuTrigger>
+                    {t("aboutAplo")}
+                  </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]" style={{ gridAutoFlow: "dense" }} >
+                    <ul
+                      className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]"
+                      style={{ gridAutoFlow: "dense" }}
+                    >
                       <li className="row-span-3">
                         <NavigationMenuLink asChild>
                           <a
@@ -294,9 +302,7 @@ export default function DesktopNavigation() {
                             <div className="mb-2 mt-4 text-lg font-medium">
                               {t("whatIsAplo")}
                             </div>
-                            <p className="text-sm leading-tight text-muted-foreground">
-                              TEST
-                            </p>
+                            <p className="text-sm leading-tight ">TEST</p>
                           </a>
                         </NavigationMenuLink>
                       </li>
@@ -311,7 +317,7 @@ export default function DesktopNavigation() {
                             <div className="text-sm font-medium leading-none">
                               {t("faq")}
                             </div>
-                            <p className="text-sm font-normal leading-tight text-muted-foreground">
+                            <p className="text-sm font-normal leading-tight ">
                               TEST
                             </p>
                           </Button>
@@ -329,7 +335,7 @@ export default function DesktopNavigation() {
                             <div className="text-sm font-medium leading-none">
                               {t("about")}
                             </div>
-                            <p className="text-sm font-normal leading-tight text-muted-foreground">
+                            <p className="text-sm font-normal leading-tight ">
                               TEST
                             </p>
                           </Button>
@@ -347,7 +353,7 @@ export default function DesktopNavigation() {
                             <div className="text-sm font-medium leading-none">
                               {t("userGuides")}
                             </div>
-                            <p className="text-sm font-normal leading-tight text-muted-foreground">
+                            <p className="text-sm font-normal leading-tight ">
                               TEST
                             </p>
                           </Button>
@@ -356,7 +362,6 @@ export default function DesktopNavigation() {
                     </ul>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
-
 
                 <NavigationMenuItem>
                   <Link href={`/${lang}/roadmap`} legacyBehavior passHref>

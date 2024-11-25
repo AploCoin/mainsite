@@ -13,6 +13,20 @@ import {
   BarChart,
 } from "recharts";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuPortal,
+  DropdownMenuSeparator,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -21,14 +35,8 @@ import {
   ChartLegend,
   ChartLegendContent,
 } from "@/components/ui/chart";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { formatHashrate } from "./utils";
+import { useTranslations } from "next-intl";
 
 const chartConfig = {
   difficulty: {
@@ -46,8 +54,11 @@ const chartConfig = {
 } satisfies ChartConfig;
 
 export const Charts = () => {
+  const t = useTranslations("Charts");
   const [blocks, setBlocks] = useState<any[]>([]);
   const [blockInterval, setBlockInterval] = React.useState("100");
+  const [maxAmount, setmaxAmount] = React.useState(50);
+
   useEffect(() => {
     console.log("fetching blocks");
     const fetchBlocks = async () => {
@@ -55,7 +66,7 @@ export const Charts = () => {
       const currentBlockNumber = await provider.getBlockNumber();
       const blocksToFetch = parseInt(blockInterval);
       const startBlock = currentBlockNumber;
-      const endBlock = currentBlockNumber - blocksToFetch * 50;
+      const endBlock = currentBlockNumber - blocksToFetch * maxAmount;
 
       // Create array of block numbers to fetch
       const blockNumbers = [];
@@ -90,7 +101,7 @@ export const Charts = () => {
     };
 
     fetchBlocks();
-  }, [useEffect, blockInterval]);
+  }, [useEffect, blockInterval, maxAmount]);
 
   // Данные для графиков
   const difficultyData = blocks.map((block) => ({
@@ -100,35 +111,111 @@ export const Charts = () => {
 
   const gasData = blocks.map((block) => ({
     name: `${block.number}`,
-    gasused: block.gasUsed ,
+    gasused: block.gasUsed,
     transactions: block.transactions,
   }));
   return (
     <Tabs defaultValue="difficulty" className="mr-4 py-4">
       <div className="flex row justify-between">
         <TabsList>
-          <TabsTrigger value="difficulty">Сложность</TabsTrigger>
-          <TabsTrigger value="gas">Использование газа</TabsTrigger>
+          <TabsTrigger value="difficulty">{t("difficulty")}</TabsTrigger>
+          <TabsTrigger value="gas">{t('gasused')}</TabsTrigger>
         </TabsList>
-        <Select value={blockInterval} onValueChange={setBlockInterval}>
-          <SelectTrigger className="w-[160px] rounded-lg sm:ml-auto bg-background">
-            <SelectValue placeholder="Интервал блоков" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="1">1 блок</SelectItem>
-            <SelectItem value="100">100 блоков</SelectItem>
-            <SelectItem value="1000">1000 блоков</SelectItem>
-            <SelectItem value="10000">10000 блоков</SelectItem>
-          </SelectContent>
-        </Select>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="outline">{t('settings')}</Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="w-56">
+            <DropdownMenuLabel>{t('settings')}</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuGroup>
+              <DropdownMenuSub>
+                <DropdownMenuSubTrigger>
+                  {t('blockinterval') + " " + blockInterval}
+                </DropdownMenuSubTrigger>
+                <DropdownMenuPortal>
+                  <DropdownMenuSubContent>
+                    <DropdownMenuLabel>{t('chooseblockinterval')}</DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    {[100, 500, 1000, 2000].map((limit) => (
+                      <>
+                        <DropdownMenuItem
+                          key={limit}
+                          onClick={async () => {
+                            setBlockInterval(limit.toString());
+                          }}
+                        >
+                          {limit + " " + t('blocks')}
+                        </DropdownMenuItem>
+                        <DropdownMenuSeparator className="bg-border" />
+                      </>
+                    ))}
+
+                    <div className="p-2">
+                      <div className="flex items-center space-x-2">
+                        <input
+                          type="number"
+                          value={blockInterval}
+                          onChange={(e) =>
+                            setBlockInterval(e.target.value.toString())
+                          }
+                          placeholder={t('custominterval')}
+                          className="flex h-8 w-full rounded-md border bg-transparent px-3 py-1 text-sm shadow-sm transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+                        />
+                      </div>
+                    </div>
+                  </DropdownMenuSubContent>
+                </DropdownMenuPortal>
+              </DropdownMenuSub>
+            </DropdownMenuGroup>
+            <DropdownMenuSeparator />
+            <DropdownMenuGroup>
+              <DropdownMenuSub>
+                <DropdownMenuSubTrigger>
+                  {t('blocklimit') + " " + maxAmount}
+                </DropdownMenuSubTrigger>
+                <DropdownMenuPortal>
+                  <DropdownMenuSubContent>
+                    <DropdownMenuLabel>{t('choseblocklimit')}</DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    {[100, 500, 1000, 2000].map((limit) => (
+                      <>
+                        <DropdownMenuItem
+                          key={limit}
+                          onClick={async () => {
+                            setmaxAmount(Number(limit));
+                          }}
+                        >
+                          {limit + " " + t('blocks')}
+                        </DropdownMenuItem>
+                        <DropdownMenuSeparator className="bg-border" />
+                      </>
+                    ))}
+
+                    <div className="p-2">
+                      <div className="flex items-center space-x-2">
+                        <input
+                          type="number"
+                          value={maxAmount}
+                          onChange={(e) => setmaxAmount(Number(e.target.value))}
+                          placeholder={t('customlimit')}
+                          className="flex h-8 w-full rounded-md border bg-transparent px-3 py-1 text-sm shadow-sm transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+                        />
+                      </div>
+                    </div>
+                  </DropdownMenuSubContent>
+                </DropdownMenuPortal>
+              </DropdownMenuSub>
+            </DropdownMenuGroup>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
 
-      {/* Вкладка сложности */}
       <TabsContent value="difficulty">
         <Card>
           <CardHeader className="flex items-center gap-2 space-y-0 py-5 sm:flex-row">
             <div className="grid flex-1 gap-1 text-center sm:text-left">
-              <CardTitle>Сложность майнинга</CardTitle>
+              <CardTitle>{t('difficultymining')}</CardTitle>
             </div>
           </CardHeader>
           <CardContent className="px-2 pt-4 sm:px-6 sm:pt-6">
@@ -181,8 +268,8 @@ export const Charts = () => {
                     if (active && payload && payload.length) {
                       return (
                         <div className="bg-background p-2 rounded-lg border">
-                          <p>Блок: {label}</p>
-                          <p>Сложность: {formatHashrate(payload[0].value)}</p>
+                          <p>{t('blocknum') + " " + label}</p>
+                          <p>{t('difficulty') + ": " + formatHashrate(payload[0].value)}</p>
                         </div>
                       );
                     }
@@ -195,7 +282,6 @@ export const Charts = () => {
                   fill="url(#fillDifficulty)"
                   stroke="var(--color-difficulty)"
                 />
-                <ChartLegend content={<ChartLegendContent />} />
               </AreaChart>
             </ChartContainer>
           </CardContent>
@@ -206,7 +292,7 @@ export const Charts = () => {
       <TabsContent value="gas">
         <Card>
           <CardHeader>
-            <CardTitle>Использование газа и транзакции</CardTitle>
+            <CardTitle>{t('gasusagetrans')}</CardTitle>
           </CardHeader>
           <CardContent className="px-2 pt-4 sm:px-6 sm:pt-6">
             <ChartContainer
@@ -237,9 +323,9 @@ export const Charts = () => {
                     if (active && payload && payload.length) {
                       return (
                         <div className="bg-background p-2 rounded-lg border">
-                          <p>Блок: {label}</p>
-                          <p>Газ: {payload[0].value}</p>
-                          <p>Транзакций: {payload[1].value}</p>
+                          <p>{t('blocknum') + " " + label}</p>
+                          <p>{t('gas') + " " + payload[0].value}</p>
+                          <p>{t('transactions') + " " + payload[1].value}</p>
                         </div>
                       );
                     }

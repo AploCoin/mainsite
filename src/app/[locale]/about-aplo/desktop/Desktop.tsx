@@ -14,11 +14,12 @@ export default function Desktop() {
             <section className={styles["section-container"]}>
                 <p className={`${styles["about-heading"]} ${murecho.className}`}>{t('historyHeading')}</p>
                 <p className={`${styles["about-text"]} ${murecho.className}`}>{t('historyText1')}</p>
-                <p className={`${styles["about-text"]} ${murecho.className}`}>{t('historyText2')}</p>
             </section>
             <section className={styles["section-container"]}>
                 <p className={`${styles["about-heading"]} ${murecho.className}`}>{t('valuesHeading')}</p>
                 <p className={`${styles["about-text"]} ${murecho.className}`}>{t('valuesIntro')}</p>
+                <p className={`${styles["about-paragraph-heading"]} ${murecho.className}`}>{t('simplicityHeading')}</p>
+                <p className={`${styles["about-text"]} ${murecho.className}`}>{t('simplicityText')}</p>
                 <p className={`${styles["about-paragraph-heading"]} ${murecho.className}`}>{t('securityHeading')}</p>
                 <p className={`${styles["about-text"]} ${murecho.className}`}>{t('securityText')}</p>
                 <p className={`${styles["about-paragraph-heading"]} ${murecho.className}`}>{t('privacyHeading')}</p>
@@ -30,7 +31,9 @@ export default function Desktop() {
                 <p className={`${styles["about-heading"]} ${murecho.className}`}>{t('technicalInfoHeading')}</p>
                 <p className={`${styles["about-text"]} ${murecho.className}`}>{t('technicalInfoText')} <Link href={""}><span className={styles["about-link"]}>{t('library')}</span></Link></p>
                 <p className={`${styles["about-paragraph-heading"]} ${murecho.className}`}>{t('powHeading')}</p>
-                <p className={`${styles["about-text"]} ${murecho.className}`}>{t('powText')} <Link href={""}><span className={styles["about-link"]}>{t('githubRepo')}</span></Link></p>
+                <p className={`${styles["about-text"]} ${murecho.className}`}>{t('powText')}</p>
+                <p className={`${styles["about-text"]} ${murecho.className}`}>{t('powText1')}<br />{t('powText2')}</p>
+
                 <p className={`${styles["about-paragraph-heading"]} ${murecho.className}`}>{t('emissionCurveHeading')}</p>
                 <p className={`${styles["about-text"]} ${murecho.className}`}>{t('emissionCurveText')} <Link href={""}><span className={styles["about-link"]}>{t('tailEmission')}</span></Link></p>
                 <p className={`${styles["about-paragraph-heading"]} ${murecho.className}`}>{t('blocksHeading')}</p>

@@ -1,7 +1,8 @@
 import styles from "./mobile.module.css";
 import {Murecho} from 'next/font/google';
 import {useTranslations} from "next-intl";
-import Crypto from '@/components/crypto/component';
+import { Charts } from "@/components/crypto/charts";
+import Info from "@/components/crypto/info";
 
 const murecho = Murecho({subsets: ['latin', 'cyrillic']});
 
@@ -72,7 +73,8 @@ export default function Mobile() {
                 <button className={styles["community-button2"]}>{t('hangouts')}</button>
             </section>
             <section className={styles["advantages-container"]}>
-                <Crypto />
+                <Charts/>
+                <Info/>
             </section>
         </>
     )
