@@ -34,6 +34,9 @@ const APLO_NETWORK = {
     symbol: "GAPLO",
     decimals: 18,
   },
+  blockExplorerUrls: [
+    "https://explorer.aplocoin.com"
+  ]
 };
 
 export default function DesktopNavigation() {
