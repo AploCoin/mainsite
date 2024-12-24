@@ -45,7 +45,7 @@ export default function Desktop() {
                 {t("aboutAplo")}
               </button>
             </Link>
-            <Link href="#">
+            <Link href="https://t.me/aplocoin_community">
               <button
                 className={`${styles["right-side-button2"]} ${murecho.className}`}
               >
@@ -175,9 +175,9 @@ export default function Desktop() {
           >
             {t("contributeDescription")}
           </p>
-          <button className={styles["community-advantage-button"]}>
+          <Link href="https://github.com/AploCoin/" target='_blank' className={styles["community-advantage-button"]}>
             {t("contributing")}
-          </button>
+          </Link>
         </div>
         <img
           src="/main/community-image-1.png"
